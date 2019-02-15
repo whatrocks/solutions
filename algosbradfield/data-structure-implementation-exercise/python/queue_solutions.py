@@ -42,41 +42,43 @@ class LinkedListQueue(object):
     def __init__(self):
         self.head = None
         self.tail = None
+        self.num_items = 0
 
     def enqueue(self, item):
-        if self.head == None:
-            temp = LinkedListNode(item, None, None)
-            self.head = temp
-            self.tail = temp
+        node = LinkedListNode(item, None, None)
+
+        # Link the old head and the new node (which becomes the head)
+        if self.head is None:
+            self.tail = node
         else:
-            temp = LinkedListNode(item, None, self.head)
-            self.head.prev = temp
-            self.head = temp
+            self.head.prev = node
+            node.next = self.head
+
+        self.head = node
+        self.num_items += 1
 
     def dequeue(self):
-        tail = self.tail
-        self.tail = tail.prev
+        # Update the tail
+        ret_node = self.tail
+        self.tail = self.tail.prev
+
+        # Unlink things
+        ret_node.prev = None
+
         if self.tail == None:
             self.head = None
         else:
             self.tail.next = None
-        return tail.value
+
+        self.num_items -= 1
+
+        return ret_node.value
 
     def size(self):
-        size = 0
-        if self.head == None:
-            return 0
-        current = self.head
-        while True:
-            if current.next == None:
-                break
-            else:
-                current = current.next
-                size += 1
-        return size
+        return self.num_items
 
     def is_empty(self):
-        return self.head == None
+        return self.num_items == 0
 
 
 class RingBufferQueue(object):
@@ -94,33 +96,8 @@ class RingBufferQueue(object):
     environment, you may prefer to just resize the underlying ring buffer at
     these times, instead.
     """
-    # def __init__(self):
-    #     self.storage = [None, None, None, None, None, None, None, None]
-    #     self.read = 0
-    #     self.write = 0
-    #     self.count = 0
-
-    # def enqueue(self, item):
-    #     self.storage[self.write] = item
-    #     # What if they overtake
-    #     next_write = (self.write + 1) % len(self.storage)
-    #     self.write = next_write
-    #     self.count += 1
-        
-    # def dequeue(self):
-    #     item = self.storage[self.read]
-    #     self.read = (self.read + 1) % len(self.storage)
-    #     self.count -= 1
-    #     return item
-
-    # def size(self):
-    #     return self.count
-
-    # def is_empty(self):
-    #     return self.count == 0
-
     def __init__(self):
-        self.capacity = 200
+        self._capacity = 200
         self._items = [None] * self._capacity
         self._write_idx = 0
         self._read_idx = 0
@@ -128,17 +105,17 @@ class RingBufferQueue(object):
 
     def enqueue(self, item):
         if self._item_count == self._capacity:
-            # if buffer is full, rotate the items so that the next items to be 
-            # read are at the beginning, then double the capacity.
-            # To rotate, we reverse the whole list in place, then
-            # reverse both components
+            # If the buffer is full, rotate items so that the next items to be
+            # read are at the beginning, then double the capacity. To rotate,
+            # we reverse the whole list in place, then reverse both components.
+            # See Programming Pearls for an explanation.
             items = self._items
             items.reverse()
             n = self._capacity - self._read_idx
             for i in range(n):
                 items[i], items[n-i-1] = items[n-i-1], items[i]
             for i in range(self._read_idx//2):
-                items[n+i], items[n-i-1] = items[n-i-1], items[i]
+                items[n+i], items[-i-1] = items[-i-1], items[n+i]
             items.extend(None for _ in range(self._capacity))
 
             self._items = items
@@ -147,15 +124,17 @@ class RingBufferQueue(object):
             self._capacity *= 2
 
         self._items[self._write_idx] = item
-        self._write_idx (self._write_idx + 1) % self._capacity
+        self._write_idx = (self._write_idx + 1) % self._capacity
         self._item_count += 1
 
+
     def dequeue(self):
-        ret_item = self._items[self._read_idx]
+        ret_itm = self._items[self._read_idx]
         self._read_idx = (self._read_idx + 1) % self._capacity
         self._item_count -= 1
-        return ret_item
-    
+
+        return ret_itm
+
     def size(self):
         return self._item_count
 

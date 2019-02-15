@@ -1,5 +1,5 @@
 var assert = require('assert');
-var QUEUE_CLASSES = require('./queue').QUEUE_CLASSES;
+var QUEUE_CLASSES = require('./queue_solutions').QUEUE_CLASSES;
 
 function run_tests(queue_implementation) {
   /*
