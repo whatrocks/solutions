@@ -12,7 +12,6 @@ var sortColors = function(nums) {
     let rw = 0
     // pointed separating white and blue
     let wb = nums.length -1
-
     let i = 0
     while (i <= wb) {
         n = nums[i]
