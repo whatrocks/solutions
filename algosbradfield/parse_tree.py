@@ -48,6 +48,47 @@ def evaluate(tree):
         return tree['val']
 
 
+def preorder(node):
+    if node:
+        print(node['val'])
+        preorder(node.get('left'))
+        preorder(node.get('right'))
+
+def postorder(node):
+    if node:
+        postorder(node.get('left'))
+        postorder(node.get('right'))
+        print(node['val'])
+
+def inorder(node):
+    if node:
+        inorder(node.get('left'))
+        print(node['val'])
+        inorder(node.get('right'))
+
+def construct_expression(parse_tree):
+    if parse_tree is None:
+        return ''
+    
+    left = construct_expression(parse_tree.get('left'))
+    right = construct_expression(parse_tree.get('right'))
+    val = parse_tree['val']
+
+    if left and right:
+        print("left: ", left)
+        print("right: ", right)
+        return '({}{}{})'.format(left, val, right)
+    
+    return val
+
+
 pt = build_parse_tree('(3+(4*5))')
 print(pt)
 print(evaluate(pt))
+print(preorder(pt))
+# print("postorder")
+# print(postorder(pt))
+# print("inorder")
+# print(inorder(pt))
+
+print(construct_expression(pt))
