@@ -12,6 +12,25 @@ var numSquares = function(n) {
         }
     }
 
+    queue = squares.reverse()
+    depth = 1
+
+    while (true) {
+        let next_level = []
+        for (node of queue) {
+            for (square of squares) {
+                if (node + square === n) {
+                    return depth + 1
+                } else if (node + square < n) {
+                    next_level.push(node+square)
+                }
+            }
+        }
+        queue = next_level
+        depth += 1
+    }
+    // return level
+
     // while (true) {
     //     let nextLevel = []
     //     for (let num of currentLevel) {
@@ -84,6 +103,6 @@ var numSquares = function(n) {
 
 console.log("starting tests")
 assert.equal(numSquares(43), 3)
-// assert.equal(numSquares(15), 4)
-// assert.equal(numSquares(12), 3)
+assert.equal(numSquares(15), 4)
+assert.equal(numSquares(12), 3)
 console.log("done")
