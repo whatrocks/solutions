@@ -1,14 +1,15 @@
 class MinHeap {
-  constructor(
-    comparatorFunction = (a, b) => {
-      if (a === b) {
-        return 0;
-      }
-      return a < b ? -1 : 1;
-    }
-  ) {
+  constructor(comparatorFunction) {
     this.heapContainer = [];
-    this.compare = comparatorFunction;
+    this.compare = comparatorFunction
+      ? comparatorFunction
+      : (a, b) => {
+        console.log("using this")
+          if (a === b) {
+            return 0;
+          }
+          return a < b ? -1 : 1;
+        };
   }
 
   getLeftChildIndex(parentIndex) {
@@ -89,7 +90,6 @@ class MinHeap {
 
     // Fix this
     const numberOfItemsToRemove = this.find(item, comparator).length;
-    console.log("removing: ", numberOfItemsToRemove)
 
     for (let iteration = 0; iteration < numberOfItemsToRemove; iteration += 1) {
       // we need to find item indexto remove each time after removeal since
@@ -155,6 +155,8 @@ class MinHeap {
     // with respect to its parent element
     let currentIndex = customStartIndex || this.heapContainer.length - 1;
 
+    console.log("heaping up!")
+
     while (
       this.hasParent(currentIndex) &&
       !this.pairIsInCorrectOrder(
@@ -162,55 +164,55 @@ class MinHeap {
         this.heapContainer[currentIndex]
       )
     ) {
-        console.log("swapping up");
-        this.swap(currentIndex, this.getParentIndex(currentIndex))
-        currentIndex = this.getParentIndex(currentIndex)
+      console.log("swapping up");
+      this.swap(currentIndex, this.getParentIndex(currentIndex));
+      currentIndex = this.getParentIndex(currentIndex);
     }
   }
 
   heapifyDown(customStartIndex = 0) {
-      // compare parent element to its childen and swap parent with the appropriate
-      // child (smallest for minHeap and largest for maxheap)
-      // so same for next childrn after swap
-      let currentIndex = customStartIndex;
-      let nextIndex = null;
+    // compare parent element to its childen and swap parent with the appropriate
+    // child (smallest for minHeap and largest for maxheap)
+    // so same for next childrn after swap
+    let currentIndex = customStartIndex;
+    let nextIndex = null;
 
-      while (this.hasLeftChild(currentIndex)) {
-          if (this.hasRightChild(currentIndex) && this.pairIsInCorrectOrder(this.rightChild(currentIndex), this.leftChild(currentIndex))) {
-              nextIndex = this.getRightChildIndex(currentIndex)
-          } else {
-              nextIndex = this.getLeftChildIndex(currentIndex)
-          }
-
-          if (this.pairIsInCorrectOrder(
-              this.heapContainer[currentIndex],
-              this.heapContainer[nextIndex]
-          )) {
-              break;
-          }
-
-          this.swap(currentIndex, nextIndex);
-          currentIndex = nextIndex;
+    while (this.hasLeftChild(currentIndex)) {
+      if (
+        this.hasRightChild(currentIndex) &&
+        this.pairIsInCorrectOrder(
+          this.rightChild(currentIndex),
+          this.leftChild(currentIndex)
+        )
+      ) {
+        nextIndex = this.getRightChildIndex(currentIndex);
+      } else {
+        nextIndex = this.getLeftChildIndex(currentIndex);
       }
+
+      if (
+        this.pairIsInCorrectOrder(
+          this.heapContainer[currentIndex],
+          this.heapContainer[nextIndex]
+        )
+      ) {
+        break;
+      }
+
+      this.swap(currentIndex, nextIndex);
+      currentIndex = nextIndex;
+    }
   }
 
   pairIsInCorrectOrder(firstElement, secondElement) {
-      console.log("first: ", firstElement, "second: ", secondElement)
-      return firstElement <= secondElement
+    console.log("first: ", firstElement, "second: ", secondElement)
+    const val = this.compare(firstElement, secondElement)
+    if (val <= 0) {
+      return false
+    } else {
+      return true
+    }
   }
 }
 
-const mh = new MinHeap()
-mh.add(9)
-console.log(mh)
-mh.add(6)
-console.log(mh)
-mh.add(5)
-console.log(mh)
-mh.add(2)
-console.log(mh)
-mh.add(3)
-console.log(mh)
-console.log("-----------------------")
-mh.remove(2)
-console.log(mh)
+module.exports = MinHeap;
