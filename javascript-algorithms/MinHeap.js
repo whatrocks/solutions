@@ -134,8 +134,11 @@ class MinHeap {
       itemIndex += 1
     ) {
       // might need to adjust this for priority queues
-      if (item === this.heapContainer[itemIndex]) {
-        foundItemIndices.push(itemIndex);
+      // if (item === this.heapContainer[itemIndex]) {
+      //   foundItemIndices.push(itemIndex);
+      // }
+      if (comparator(item, this.heapContainer[itemIndex])) {
+        foundItemIndices.push(itemIndex)
       }
     }
     return foundItemIndices;
@@ -205,7 +208,7 @@ class MinHeap {
   }
 
   pairIsInCorrectOrder(firstElement, secondElement) {
-    console.log("first: ", firstElement, "second: ", secondElement)
+    // console.log("first: ", firstElement, "second: ", secondElement)
     const val = this.compare(firstElement, secondElement)
     if (val <= 0) {
       return false

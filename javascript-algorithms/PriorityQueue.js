@@ -30,7 +30,9 @@ class PriorityQueue extends MinHeap {
     }
 
     findByValue(item) {
-        return this.find(item, this.compareValue);
+        const found = this.find(item, this.compareValue);
+        console.log("found: ", found)
+        return found;
     }
 
     hasValue(item) {
@@ -41,7 +43,7 @@ class PriorityQueue extends MinHeap {
         if (this.priorities[a] === this.priorities[b]) {
             return 0
         }
-        console.log("a: ", this.priorities[a], "b: ", this.priorities[b])
+        // console.log("a: ", this.priorities[a], "b: ", this.priorities[b])
         return this.priorities[a] < this.priorities[b] ? -1 : 1
     }
 
@@ -53,19 +55,21 @@ class PriorityQueue extends MinHeap {
     }
 }
 
-const pq = new PriorityQueue();
-pq.add("first", 1)
-console.log(pq.heapContainer)
-console.log("=====================")
-pq.add("second",2)
-console.log(pq.heapContainer)
-console.log("=====================")
-pq.add("three",30)
-console.log(pq.heapContainer)
-console.log("=====================")
-pq.add("urgent",10)
-// pq.remove("first message")
-console.log(pq.heapContainer)
-console.log("=====================")
-console.log(pq.poll())
-console.log(pq.heapContainer)
+module.exports = PriorityQueue
+
+// const pq = new PriorityQueue();
+// pq.add("first", 1)
+// console.log(pq.heapContainer)
+// console.log("=====================")
+// pq.add("second",2)
+// console.log(pq.heapContainer)
+// console.log("=====================")
+// pq.add("three",30)
+// console.log(pq.heapContainer)
+// console.log("=====================")
+// pq.add("urgent",10)
+// // pq.remove("first message")
+// console.log(pq.heapContainer)
+// console.log("=====================")
+// console.log(pq.poll())
+// console.log(pq.heapContainer)
