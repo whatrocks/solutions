@@ -38,8 +38,6 @@ var networkDelayTime = function(times, N, K) {
             }
         }
     }
-    console.log("costs so far: ", costsSoFar)
-
     if (Object.keys(costsSoFar).length !== N - 1) {
         return -1
     } else {
