@@ -6,14 +6,15 @@ import (
 
 // Distance calculates the Hamming distance between two strings.
 func Distance(a, b string) (int, error) {
-	if len(a) != len(b) {
-		return -1, errors.New("Strings not same length.")
+	runesA, runesB := []rune(a), []rune(b)
+	if len(runesA) != len(runesB) {
+		return 0, errors.New("strings should have equal length")
 	}
-	count := 0
-	for idx, c := range a {
-		if string(c) != string(b[idx]) {
-			count++
+	distance := 0
+	for i := 0; i < len(runesA); i++ {
+		if runesA[i] != runesB[i] {
+			distance++
 		}
 	}
-	return count, nil
+	return distance, nil
 }
