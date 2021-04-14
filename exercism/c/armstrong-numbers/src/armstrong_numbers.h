@@ -2,7 +2,9 @@
 #define ARMSTRONG_NUMBERS
 
 #include <stdbool.h>
+#include <stdint.h>
 
-bool is_armstrong_number(int candidate);
+// Only supports 32 bit integers
+bool is_armstrong_number(int32_t candidate);
 
 #endif
