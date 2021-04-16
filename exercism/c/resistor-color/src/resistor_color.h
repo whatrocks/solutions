@@ -1,5 +1,3 @@
-#include "stdint.h"
-
 #ifndef RESISTOR_COLOR_H
 #define RESISTOR_COLOR_H
 
@@ -18,6 +16,6 @@ typedef enum {
 
 int color_code(resistor_band_t color);
 
-int* colors();
+const resistor_band_t* colors(void);
 
 #endif
