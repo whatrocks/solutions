@@ -9,37 +9,22 @@ bool is_isogram(const char phrase[]) {
     return false;
   }
 
-  // outerLoop, innerLoop
-  int i = 0, j = 0;
-  char outerLetter = tolower(phrase[i]);
+  char seenLetters[26];
 
-  // how to do a hash table instead of this?
-  char seenLetters[strlen(phrase) + 1]; 
-  seenLetters[0] = '\0';
-
-  while (outerLetter != '\0') {
-    outerLetter = tolower(phrase[i]);
-    char innerLetter = seenLetters[j];
-    while (innerLetter != '\0') {
-      if (outerLetter != '-' && outerLetter != ' ' & i > 0 && innerLetter == outerLetter) {
-        return false;
-      }
-      j++;
-      innerLetter = seenLetters[j];
+  for (size_t i = 0; phrase[i] != '\0'; i++) {
+    if (phrase[i] == '-' || phrase[i] == ' ') {
+      continue;
     }
     
-    // add to our "seen letters" string
-    // I had to do this part because I couldn't do 'strncat'
-    // when the string was empty...
-    if (seenLetters[0] == '\0') {
-      seenLetters[0] = outerLetter;
-      seenLetters[1] = '\0';
-    } else {
-      strncat(seenLetters, &outerLetter, 1);
+    unsigned char c = (unsigned char) phrase[i];
+    char letter = tolower(c);
+
+    // ascii code for lowercase a is 97
+    if (seenLetters[letter - 97] == '1') {
+      return false;
     }
- 
-    i++;
-    j = 0;
+
+    seenLetters[letter - 97] = '1';
   }
   return true;
 }
