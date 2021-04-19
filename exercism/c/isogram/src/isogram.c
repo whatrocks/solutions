@@ -8,7 +8,7 @@ bool is_isogram(const char phrase[]) {
     return false;
   }
 
-  char seenLetters[26];
+  bool seenLetters[26] = {false};
 
   for (size_t i = 0; phrase[i] != '\0'; i++) {
     if (phrase[i] == '-' || phrase[i] == ' ') {
@@ -18,12 +18,11 @@ bool is_isogram(const char phrase[]) {
     unsigned char c = (unsigned char) phrase[i];
     char letter = tolower(c);
 
-    // ascii code for lowercase a is 97
-    if (seenLetters[letter - 97] == '1') {
+    if (seenLetters[letter - 'a']) {
       return false;
     }
 
-    seenLetters[letter - 97] = '1';
+    seenLetters[letter - 'a'] = true;
   }
   return true;
 }
