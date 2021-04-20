@@ -11,17 +11,14 @@ bool is_isogram(const char phrase[]) {
   bool seenLetters[26] = {false};
 
   for (size_t i = 0; phrase[i] != '\0'; i++) {
-    if (phrase[i] == '-' || phrase[i] == ' ') {
+    unsigned char c = phrase[i];
+    char letter = tolower(c);
+    if (!isalpha(letter)) {
       continue;
     }
-    
-    unsigned char c = (unsigned char) phrase[i];
-    char letter = tolower(c);
-
     if (seenLetters[letter - 'a']) {
       return false;
     }
-
     seenLetters[letter - 'a'] = true;
   }
   return true;
