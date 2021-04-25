@@ -1,9 +1,11 @@
-#include <math.h>
-
 #include "grains.h"
+#include <stdio.h>
 
 uint64_t square(uint8_t index) {
-  return pow(2, index - 1);
+  if (index < 1 || index > 64) {
+    return 0;
+  }
+  return 1L << (index - 1);
 }
 
 uint64_t total(void) {
