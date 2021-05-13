@@ -1,5 +1,4 @@
 #include <math.h>
-#include <stdbool.h>
 
 #include "darts.h"
 
