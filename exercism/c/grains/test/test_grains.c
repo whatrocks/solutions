@@ -1,4 +1,5 @@
 #include "vendor/unity.h"
+#include <stdio.h>
 #include "../src/grains.h"
 
 void setUp(void)
