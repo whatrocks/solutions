@@ -1,7 +1,7 @@
-#include <stdint.h>
-
 #ifndef DARTS_H
 #define DARTS_H
+
+#include <stdint.h>
 
 typedef float coordinate_t[2];
 
