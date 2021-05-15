@@ -3,7 +3,7 @@
 #include "darts.h"
 
 uint8_t score(coordinate_t pos) {
-  float distance = hypot(pos[0], pos[1]);
+  float distance = hypot(pos.x, pos.y);
   if (distance <= 1) {
     return 10; 
   }

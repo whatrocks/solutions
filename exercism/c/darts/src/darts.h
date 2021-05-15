@@ -3,7 +3,10 @@
 
 #include <stdint.h>
 
-typedef float coordinate_t[2];
+typedef struct coordinate_t {
+  float x;
+  float y;
+} coordinate_t;
 
 uint8_t score(coordinate_t pos);
 
