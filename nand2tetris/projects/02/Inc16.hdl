@@ -13,5 +13,9 @@ CHIP Inc16 {
     OUT out[16];
 
     PARTS:
-   // Put you code here:
+    Not16(in=in, out=notin);
+    Or16(a=in, b=notin, out=orout);
+    Add16(a=orout, b=orout, out=addout);
+    Not16(in=addout, out=notaddout);
+    Add16(a=in, b=notaddout, out=out);
 }
