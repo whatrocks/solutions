@@ -39,5 +39,40 @@ CHIP CPU {
         pc[15];          // address of next instruction
 
     PARTS:
-    // Put your code here:
+    // A instruction first bit is 0, so need to turn to 1
+    Not(in=instruction[0], out=noti)
+
+    Mux16(a=aluout, b=instruction, sel=noti, out=mux1out);
+
+    // need to load if A instruction no matter what
+    ARegister(in=mux1out, load=instruction[10], out=aout, out[0..15]=addressM);
+
+    Mux16(a=aout, b=inM, sel=instruction[3], out=mux2out);
+
+    DRegister(in=aluout, load=instruction[11], out=dout);
+
+    ALU(
+        x=dout,
+        y=mux2out,
+        zx=instruction[4],
+        nx=instruction[5],
+        zy=instruction[6],
+        ny=instruction[7],
+        f=instruction[8],
+        no=instruction[9],
+        out=aluout,
+        zr=zr,
+        ng=ng
+    )
+
+    PC(
+        in=aout,
+        reset=reset,
+        load=c[13], // FIX
+        inc=c[14], // FIX
+        out=pc
+    )
+
+    // C instruction and store in M both 1, then writeM is 1
+    And(a=instruction[1], b=instruction[12], out=writeM)
 }
