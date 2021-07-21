@@ -50,7 +50,8 @@ CHIP CPU {
 
     Mux16(a=aout, b=inM, sel=instruction[12], out=mux2out);
 
-    DRegister(in=aluout, load=instruction[4], out=dout);
+    And(a=instruction[4], b=isCinstruction, out=shouldLoadDRegister);
+    DRegister(in=aluout, load=shouldLoadDRegister, out=dout);
 
     ALU(
         x=dout,
@@ -69,9 +70,9 @@ CHIP CPU {
 
     // Jump?
     Not(in=ng, out=pos);
-    And(a=pos, b=instruction[2], out=xpos);
+    And(a=pos, b=instruction[0], out=xpos);
     And(a=zr, b=instruction[1], out=xzero);
-    And(a=ng, b=instruction[0], out=xneg);
+    And(a=ng, b=instruction[2], out=xneg);
     Or(a=xpos, b=xzero, out=y1);
     Or(a=y1, b=xneg, out=jump);
     And(a=jump, b=isCinstruction, out=shouldJump);
