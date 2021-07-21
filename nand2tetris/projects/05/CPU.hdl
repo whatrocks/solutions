@@ -89,8 +89,6 @@ CHIP CPU {
     );
 
     // C instruction and store in M both 1, then writeM is 1
-    And(a=isCinstruction, b=instruction[3], out=shouldWriteM);
-    Not(in=reset, out=notreset);
-    And(a=shouldWriteM, b=notreset, out=writeM);
+    And(a=isCinstruction, b=instruction[3], out=writeM);
 
 }
