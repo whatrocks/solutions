@@ -40,39 +40,51 @@ CHIP CPU {
 
     PARTS:
     // A instruction first bit is 0, so need to turn to 1
-    Not(in=instruction[0], out=noti)
+    Not(in=instruction[15], out=noti);
+    Or(a=noti, b=instruction[5], out=isAinstruction);
+    Not(in=isAinstruction, out=isCinstruction);
 
     Mux16(a=aluout, b=instruction, sel=noti, out=mux1out);
 
-    // need to load if A instruction no matter what
-    ARegister(in=mux1out, load=instruction[10], out=aout, out[0..15]=addressM);
+    ARegister(in=mux1out, load=isAinstruction, out=aout, out[0..14]=addressM);
 
-    Mux16(a=aout, b=inM, sel=instruction[3], out=mux2out);
+    Mux16(a=aout, b=inM, sel=instruction[12], out=mux2out);
 
-    DRegister(in=aluout, load=instruction[11], out=dout);
+    DRegister(in=aluout, load=instruction[4], out=dout);
 
     ALU(
         x=dout,
         y=mux2out,
-        zx=instruction[4],
-        nx=instruction[5],
-        zy=instruction[6],
-        ny=instruction[7],
-        f=instruction[8],
-        no=instruction[9],
+        zx=instruction[11],
+        nx=instruction[10],
+        zy=instruction[9],
+        ny=instruction[8],
+        f=instruction[7],
+        no=instruction[6],
         out=aluout,
+        out=outM,
         zr=zr,
         ng=ng
-    )
+    );
+
+    // Jump?
+    Not(in=ng, out=pos);
+    And(a=pos, b=instruction[2], out=xpos);
+    And(a=zr, b=instruction[1], out=xzero);
+    And(a=ng, b=instruction[0], out=xneg);
+    Or(a=xpos, b=xzero, out=y1);
+    Or(a=y1, b=xneg, out=jump);
+    And(a=jump, b=isCinstruction, out=shouldJump);
+    Not(in=shouldJump, out=shouldIncrement);
 
     PC(
         in=aout,
         reset=reset,
-        load=c[13], // FIX
-        inc=c[14], // FIX
-        out=pc
-    )
+        load=shouldJump,
+        inc=shouldIncrement,
+        out[0..14]=pc
+    );
 
     // C instruction and store in M both 1, then writeM is 1
-    And(a=instruction[1], b=instruction[12], out=writeM)
+    And(a=instruction[14], b=instruction[3], out=writeM);
 }
