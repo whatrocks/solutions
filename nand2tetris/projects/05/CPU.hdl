@@ -70,7 +70,9 @@ CHIP CPU {
 
     // Jump?
     Not(in=ng, out=pos);
-    And(a=pos, b=instruction[0], out=xpos);
+    Not(in=zr, out=notzr);
+    And(a=pos, b=instruction[0], out=ypos);
+    And(a=ypos, b=notzr, out=xpos);
     And(a=zr, b=instruction[1], out=xzero);
     And(a=ng, b=instruction[2], out=xneg);
     Or(a=xpos, b=xzero, out=y1);
