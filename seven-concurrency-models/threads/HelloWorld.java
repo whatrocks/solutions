@@ -6,7 +6,8 @@ public class HelloWorld {
             }
         };
         myThread.start();
-        Thread.yield();
+        // Thread.yield();
+        Thread.sleep(2);
         System.out.print("Hello from main thread");
         myThread.join();
     }
