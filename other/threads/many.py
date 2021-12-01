@@ -14,7 +14,7 @@ if __name__ == '__main__':
     logging.info('Main    : before creating thread')
 
     threads = list()
-    for index in range(3):
+    for index in range(10):
         logging.info("Main    : create and start thread %d.", index)
         x = threading.Thread(target=thread_function, args=(index,))
         threads.append(x)
