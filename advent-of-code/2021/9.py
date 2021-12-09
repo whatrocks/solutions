@@ -43,7 +43,48 @@ with open("input9.txt") as f:
     print(risk)
     # print(grid)
 
+    # count the sizes of the islands
+    print("============================================")
+    def printGrid(g):
+        s = ''
+        for row in g:
+            s2 = ''
+            for col in row:
+                s += col
+            s2 += '\n'
+            s += s2
+        print(s)
 
-    # part two
-    # dFS until you hit a 9 or a None
-    # def checker(grid):
+    sizes = []
+    def checker(rIdx, cIdx, size):
+        val = grid[rIdx][cIdx]
+        if val == "9":
+            return size
+        else:
+            grid[rIdx][cIdx] = "9"
+            size += 1
+            #up
+            if rIdx > 0:
+                size = checker(rIdx -1,cIdx, size)
+            #down
+            if rIdx < len(grid) - 1:
+                size = checker(rIdx + 1,cIdx, size)
+            #left
+            if cIdx > 0:
+                size = checker(rIdx,cIdx - 1, size)
+            #right
+            if cIdx < len(grid[rIdx]) - 1:
+                size = checker(rIdx, cIdx + 1, size)
+            return size
+
+    for rIdx, row in enumerate(grid):
+        for cIdx, col in enumerate(row):
+            # printGrid(grid)
+            if col != '9':
+                s = checker(rIdx, cIdx, 0)
+                sizes.append(s)
+    
+
+    biggest = sorted(sizes, reverse=True)
+    result = biggest[0] * biggest[1] * biggest[2]
+    print(result)
