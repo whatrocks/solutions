@@ -10,15 +10,18 @@ def printGrid(g):
         s += rs
     print(s)
 
+target_flashes = 0
 with open("input11.txt") as f:
     lines = [x.rstrip() for x in f.readlines()]
     grid = [list(l) for l in lines]
     for r, row in enumerate(grid):
         for c, col in enumerate(row):
             grid[r][c] = int(col)
+            target_flashes += 1
     
-    flash_count = 0
-    for _ in range(100):
+    step = 1
+    while True:
+        flash_count = 0
         octopi = []
         flashed = {}
         # first increase everyone by one
@@ -103,8 +106,12 @@ with open("input11.txt") as f:
                     if neighbor_age != 1:
                         grid[row+1][col+1] = neighbor_age
                 # printGrid(grid)
-                
+        if flash_count == target_flashes:
+            break
+        step += 1
+
     print("--------")
     print("flash Count: ", flash_count)
+    print("Step: ", step)
     printGrid(grid)
     print("--------")
