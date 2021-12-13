@@ -1,13 +1,15 @@
 
 
 def dfs(graph, start):
-    # visited = set()
+
     paths = []
 
-    def traverse(vertex, path, visited):
-
+    def traverse(vertex, path, visited, doubler):
         if vertex in visited:
-            return
+            if doubler != "":
+                return
+            if doubler == "":
+                doubler = vertex
 
         if not len(path):
             path = vertex
@@ -15,20 +17,23 @@ def dfs(graph, start):
             path += ',' + vertex
         
         for next_vertex in graph[vertex]:
+            if next_vertex == 'start':
+                continue
             if next_vertex == 'end':
                 path += ',end'
                 paths.append(path)
             elif next_vertex in graph:
-            # if next_vertex in graph and next_vertex not in visited:
                 if vertex.upper() != vertex:
                     visited.add(vertex)
-                traverse(next_vertex, path, visited)
-                if vertex.upper() != vertex:
-                    visited.remove(vertex)
+                traverse(next_vertex, path, visited, doubler)
+                if vertex.upper() != vertex and vertex in visited:
+                    if doubler != vertex:
+                        visited.remove(vertex)
+             
 
-        
+    doubler = ''    
     visited = set()
-    traverse(start, '', visited)
+    traverse(start, '', visited, doubler)
     return paths
     
 
@@ -46,15 +51,7 @@ with open('input12.txt') as f:
             graph[dest].append(key)
         else:
             graph[dest] = [key]
-        
-        # # if the key is upper case, then there is a path pack to A
-        # if key.upper() == key and dest != "end":
-        #     print("key: ", key)
-        #     if dest in graph:
-        #         graph[dest].append(key)
-        #     else:
-        #         graph[dest] = [key]
     
-    print("graph: ", graph)
+    # print("graph: ", graph)
     paths = dfs(graph, 'start')
-    print("PATHS: ", paths, len(paths))
+    print("PATHS: ", len(paths))
