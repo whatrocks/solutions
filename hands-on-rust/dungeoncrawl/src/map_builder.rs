@@ -9,7 +9,7 @@ pub struct MapBuilder {
 
 impl MapBuilder {
     pub fn new(rng: &mut RandomNumberGenerator) -> Self {
-        let mut mb = MapBuilder{
+        let mut mb = MapBuilder {
             map: Map::new(),
             rooms: Vec::new(),
             player_start: Point::zero(),
