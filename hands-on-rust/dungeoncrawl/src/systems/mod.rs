@@ -8,6 +8,7 @@ mod map_render;
 mod movement;
 mod player_input;
 mod random_move;
+mod tooltips;
 
 pub fn build_input_scheduler() -> Schedule {
     Schedule::builder()
@@ -16,6 +17,7 @@ pub fn build_input_scheduler() -> Schedule {
         .add_system(map_render::map_render_system())
         .add_system(entity_render::entity_render_system())
         .add_system(hud::hud_system())
+        .add_system(tooltips::tooltips_system())
         .build()
 }
 
