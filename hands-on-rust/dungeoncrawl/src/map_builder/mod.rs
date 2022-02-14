@@ -4,6 +4,7 @@ use empty::EmptyArchitect;
 use rooms::RoomsArchitect;
 
 mod automata;
+mod drunkard;
 mod empty;
 mod rooms;
 
