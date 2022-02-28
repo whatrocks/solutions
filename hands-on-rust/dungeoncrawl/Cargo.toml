@@ -7,6 +7,10 @@ edition = "2021"
 
 [dependencies]
 bracket-lib = "~0.8.1"
-legion = "=0.3.1"
+legion = { version = "=0.3.1", default-features = false, features = ["wasm-bindgen", "codegen"] }
 serde = { version = "=1.0.115" }
 ron = "=0.6.1"
+getrandom = { version = "0.2", features = ["js"] }
+
+[profile.release]
+lto = "thin"
