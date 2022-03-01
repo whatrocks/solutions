@@ -1,9 +1,18 @@
 <html>
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <style>
+      #canvas {
+        position:fixed;
+        left:0;
+        top:0;
+        width:100%;
+        height:100%;
+      }
+    </style>
   </head>
   <body>
-    <canvas id="canvas" width="640" height="480"></canvas>
+    <canvas id="canvas"></canvas>
     <script src="./dungeoncrawl.js"></script>
     <script>
       window.addEventListener("load", async () => {
