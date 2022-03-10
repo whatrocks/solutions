@@ -52,4 +52,28 @@ fn main() {
         println!("{}...", number);
     }
     println!("LIFTOFF AGAIN!");
+
+    let fah = 32.0;
+    let cel = convert_temp(fah, 'f');
+    println!("cel is {} ", cel);
+    println!("fah is {}", convert_temp(0.0, 'c'));
+
+    for n in 0..10 {
+        println!("fibo {}", fibo(n));
+    }
+}
+
+fn convert_temp(temp: f32, current_unit: char) -> f32 {
+    if current_unit == 'c' {
+        temp * 1.8 + 32.0
+    } else {
+        (temp - 32.0) * 5.0 / 9.0
+    }
+}
+
+fn fibo(target: i32) -> i32 {
+    if target <= 1 {
+        return target
+    }
+    fibo(target - 1) + fibo(target - 2)
 }
