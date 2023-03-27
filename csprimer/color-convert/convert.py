@@ -1,25 +1,15 @@
+import re
+import sys
 
-def convert_hex_to_rgb(hexstr):
-    """
-     each two chars is a byte
-     which is 0 to 255
-     so just convert them to decimal
-     and put in array
-    """
+def convert(hexy):
+    code = hexy.group(0)[1:]
     colors = []
-    r = int(hexstr[0:2], 16)
-    g = int(hexstr[2:4], 16)
-    b = int(hexstr[4:6], 16)
-    colors = [r,g,b]
-    return 'rgb(' + ' '.join([str(x) for x in colors])  + ')'
+    idx = 0
+    while idx < len(code):
+        current_color_code = code[idx:idx+2]
+        rgb_value = int(current_color_code, 16)
+        colors.append(str(rgb_value))
+        idx += 2
+    return 'rgb(' + ' '.join(colors) + ')'
 
-
-with open('simple.css') as f:
-    lines = f.readlines()
-    result = ''
-    for line in lines:
-        if '#' in line:
-            idx = line.index('#')
-            line = line[0:idx] + convert_hex_to_rgb(line[idx+1:])+ ';'
-        result = result + line + '\n'
-    print(result)
+sys.stdout.write(re.sub(r'\#[0-9a-fA-F]+', convert, sys.stdin.read()))
