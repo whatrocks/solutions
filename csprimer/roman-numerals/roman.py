@@ -1,15 +1,3 @@
-ONES = {
- '1': 'I',
- '2': 'II',
- '3': 'III',
- '4': 'IV',
- '5': 'V',
- '6': 'VI',
- '7': 'VII',
- '8': 'VIII',
- '9': 'IX'
-}
-
 PLACES = {
  '1': ['I', 'V', 'X'],
  '10': ['X','L', 'C'],
@@ -57,11 +45,36 @@ def roman(num):
         
     return result
 
-#:w!return ONES[str(num)]
+
+ROMANS = {
+ '1000': 'M',
+ '900': 'CM',
+ '500': 'D',
+ '400': 'CD',
+ '100': 'C',
+ '90': 'XC',
+ '50': 'L',
+ '40': 'XL',
+ '10': 'X',
+ '9': 'IX',
+ '5': 'V',
+ '4': 'IV',
+ '1': 'I',
+}
 
 
-for i in range(1,20):
-    print(roman(i))
+def roman_recursive(num):
+    # subtract partA
+    if num == 0:
+        return ''
+    for key in ROMANS:
+        target = int(key)
+        if num - target >= 0:
+            break
+    return ROMANS[key] + roman_recursive(num - target)
+
+for i in range(1,21):
+    print(roman_recursive(i))
 
 tests = [39, 246, 789, 2421]
 
