@@ -1,2 +1,7 @@
-<h1>Hello, world!</h1>
+<h1>Hello, <%= @name %>...</h1>
 <p>The time is <%= @time %>.</p>
+<p>Time to say
+ <%= link_to "Goodbye", say_goodbye_path %>!
+</p>
+<h2>This is cool <%= 1 + 2  %> <%= "cow" + "boy" %> <%= 1.hour.from_now.localtime %></h2>
+<pre>I am weird text</pre>
