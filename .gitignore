@@ -117,3 +117,8 @@ yarn-debug.log*
 /storage/*
 !/storage/.keep
 /public/uploads
+
+tmp/cache/*
+tmp/pids/*
+tmp/sessions/*
+tmp/sockets/*

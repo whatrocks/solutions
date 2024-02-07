@@ -110,3 +110,333 @@ Processing by ProductsController#show as TURBO_STREAM
 Completed 200 OK in 20ms (Views: 8.9ms | ActiveRecord: 0.1ms | Allocations: 10553)
 
 
+Started GET "/" for 127.0.0.1 at 2024-02-07 10:04:54 -0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/charlie/.rbenv/versions/3.1.3/lib/ruby/gems/3.1.0/gems/railties-7.0.8/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/charlie/.rbenv/versions/3.1.3/lib/ruby/gems/3.1.0/gems/railties-7.0.8/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.6ms | Allocations: 474)
+Completed 200 OK in 6ms (Views: 1.7ms | ActiveRecord: 0.0ms | Allocations: 4013)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-02-07 10:04:57 -0800
+Processing by ProductsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:12
+  Rendered collection of products/_product.html.erb [1 times] (Duration: 0.9ms | Allocations: 578)
+  Rendered products/index.html.erb within layouts/application (Duration: 13.5ms | Allocations: 7590)
+  Rendered layout layouts/application.html.erb (Duration: 43.3ms | Allocations: 57595)
+Completed 200 OK in 49ms (Views: 44.6ms | ActiveRecord: 0.9ms | Allocations: 59459)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-02-07 10:08:44 -0800
+Processing by ProductsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:12
+  Rendered collection of products/_product.html.erb [1 times] (Duration: 0.4ms | Allocations: 128)
+  Rendered products/index.html.erb within layouts/application (Duration: 3.9ms | Allocations: 1305)
+  Rendered layout layouts/application.html.erb (Duration: 49.4ms | Allocations: 33900)
+Completed 200 OK in 51ms (Views: 49.7ms | ActiveRecord: 0.4ms | Allocations: 34225)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-02-07 10:08:46 -0800
+Processing by ProductsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:12
+  Rendered collection of products/_product.html.erb [1 times] (Duration: 0.3ms | Allocations: 128)
+  Rendered products/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1179)
+  Rendered layout layouts/application.html.erb (Duration: 10.1ms | Allocations: 6877)
+Completed 200 OK in 11ms (Views: 10.3ms | ActiveRecord: 0.2ms | Allocations: 7161)
+
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mProduct Delete All (0.8ms)[0m  [1m[31mDELETE FROM "products"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProduct Create (0.7ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "image_url", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Docker for Rails Developers"], ["description", "<p>\n      <em>Build, Ship, and Run Your Applications Everywhere</em> Docker does\n      for DevOps what Rails did for web development—it gives you a new set\n      of superpowers. Gone are “works on my machine” woes and lengthy setup\n      tasks, replaced instead by a simple, consistent, Docker-based\n      development environment that will have your team up and running in\n      seconds.  Gain hands-on, real-world experience with a tool that’s\n      rapidly becoming fundamental to software development. Go from zero all\n      the way to production as Docker transforms the massive leap of\n      deploying your app in the cloud into a baby step.\n      </p>"], ["image_url", "ridocker.jpg"], ["price", 19.95], ["created_at", "2024-02-07 18:09:40.293009"], ["updated_at", "2024-02-07 18:09:40.293009"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "image_url", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Design and Build Great Web APIs"], ["description", "<p>\n      <em>Robust, Reliable, and Resilient</em>\n      APIs are transforming the business world at an increasing pace. Gain\n      the essential skills needed to quickly design, build, and deploy\n      quality web APIs that are robust, reliable, and resilient. Go from\n      initial design through prototyping and implementation to deployment of\n      mission-critical APIs for your organization. Test, secure, and deploy\n      your API with confidence and avoid the “release into production”\n      panic. Tackle just about any API challenge with more than a dozen\n      open-source utilities and common programming patterns you can apply\n      right away.\n      </p>"], ["image_url", "maapis.jpg"], ["price", 24.95], ["created_at", "2024-02-07 18:09:40.295231"], ["updated_at", "2024-02-07 18:09:40.295231"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "image_url", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Modern CSS with Tailwind"], ["description", "<p>\n      <em>Flexible Styling Without the Fuss</em>\n      Tailwind CSS is an exciting new CSS framework that allows you to\n      design your site by composing simple utility classes to create complex\n      effects. With Tailwind, you can style your text, move your items on\n      the page, design complex page layouts, and adapt your design for\n      devices from a phone to a wide-screen monitor. With this book, you’ll\n      learn how to use the Tailwind for its flexibility and its consistency,\n      from the smallest detail of your typography to the entire design of\n      your site.\n      </p>"], ["image_url", "tailwind.jpg"], ["price", 18.95], ["created_at", "2024-02-07 18:09:40.296305"], ["updated_at", "2024-02-07 18:09:40.296305"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/products" for 127.0.0.1 at 2024-02-07 10:09:48 -0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:12
+  Rendered collection of products/_product.html.erb [3 times] (Duration: 0.4ms | Allocations: 812)
+  Rendered products/index.html.erb within layouts/application (Duration: 5.5ms | Allocations: 8052)
+  Rendered layout layouts/application.html.erb (Duration: 63.9ms | Allocations: 69358)
+Completed 200 OK in 70ms (Views: 64.4ms | ActiveRecord: 0.5ms | Allocations: 73809)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-02-07 10:11:51 -0800
+Processing by ProductsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:16
+  Rendered collection of products/_product.html.erb [3 times] (Duration: 1.2ms | Allocations: 641)
+  Rendered products/index.html.erb within layouts/application (Duration: 3.8ms | Allocations: 2225)
+  Rendered layout layouts/application.html.erb (Duration: 16.5ms | Allocations: 9462)
+Completed 200 OK in 19ms (Views: 17.9ms | ActiveRecord: 0.1ms | Allocations: 10441)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-02-07 10:13:48 -0800
+Processing by ProductsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  Rendered products/index.html.erb within layouts/application (Duration: 12.5ms | Allocations: 4780)
+  Rendered layout layouts/application.html.erb (Duration: 12.7ms | Allocations: 4879)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.0ms | Allocations: 5819)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <div class="flex justify-between items-center pb-8">
+    <h1 class="mx-auto text-lg font-bold text-4xl">Products</h1>
+  </div>
+
+  <table id="products" class="mx-auto">
+    <tfoot>
+      <tr>
+        <td colspan="3">
+          <div class="mt-8">
+            <%= link_to 'New product', new_product_path, class="inline rounded-lg py-3 px-5 bg-green-600 text-white block font-medium" %>
+          </div>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+  
+</div>
+
+):
+1:    <div class="w-full">
+2:      <% if notice.present? %>
+3:        <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+4:      <% end %>
+5:    
+6:      <div class="flex justify-between items-center pb-8">
+7:        <h1 class="mx-auto text-lg font-bold text-4xl">Products</h1>
+8:      </div>
+9:    
+10:      <table id="products" class="mx-auto">
+11:        <tfoot>
+12:          <tr>
+13:            <td colspan="3">
+14:              <div class="mt-8">
+15:                <%= link_to 'New product', new_product_path, class="inline rounded-lg py-3 px-5 bg-green-600 text-white block font-medium" %>
+16:              </div>
+17:            </td>
+18:          </tr>
+19:        </tfoot>
+20:      </table>
+21:      
+22:    </div>
+  
+app/views/products/index.html.erb:15: syntax error, unexpected '='
+app/views/products/index.html.erb:15: syntax error, unexpected '='
+app/views/products/index.html.erb:15: syntax error, unexpected '='
+app/views/products/index.html.erb:15: syntax error, unexpected '='
+Started GET "/products" for 127.0.0.1 at 2024-02-07 10:14:46 -0800
+Processing by ProductsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  Rendered products/index.html.erb within layouts/application (Duration: 1.1ms | Allocations: 704)
+  Rendered layout layouts/application.html.erb (Duration: 14.6ms | Allocations: 8108)
+Completed 200 OK in 18ms (Views: 16.6ms | ActiveRecord: 0.0ms | Allocations: 9048)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2024-02-07 10:14:48 -0800
+Processing by ProductsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 22.4ms | Allocations: 6351)
+  Rendered products/new.html.erb within layouts/application (Duration: 23.9ms | Allocations: 6652)
+  Rendered layout layouts/application.html.erb (Duration: 29.8ms | Allocations: 12507)
+Completed 200 OK in 32ms (Views: 30.4ms | ActiveRecord: 0.0ms | Allocations: 12925)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-02-07 10:15:07 -0800
+Processing by ProductsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  Rendered products/index.html.erb within layouts/application (Duration: 1.5ms | Allocations: 712)
+  Rendered layout layouts/application.html.erb (Duration: 8.8ms | Allocations: 6669)
+Completed 200 OK in 12ms (Views: 10.3ms | ActiveRecord: 0.0ms | Allocations: 7650)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2024-02-07 10:15:07 -0800
+Processing by ProductsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 4.0ms | Allocations: 2098)
+  Rendered products/new.html.erb within layouts/application (Duration: 5.7ms | Allocations: 2376)
+  Rendered layout layouts/application.html.erb (Duration: 14.2ms | Allocations: 7935)
+Completed 200 OK in 16ms (Views: 14.8ms | ActiveRecord: 0.0ms | Allocations: 8299)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2024-02-07 10:15:09 -0800
+Processing by ProductsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 3.3ms | Allocations: 1611)
+  Rendered products/new.html.erb within layouts/application (Duration: 3.7ms | Allocations: 1709)
+  Rendered layout layouts/application.html.erb (Duration: 12.6ms | Allocations: 7272)
+Completed 200 OK in 15ms (Views: 13.4ms | ActiveRecord: 0.0ms | Allocations: 7562)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-02-07 10:16:56 -0800
+Processing by ProductsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:23
+  Rendered products/index.html.erb within layouts/application (Duration: 6.0ms | Allocations: 3301)
+  Rendered layout layouts/application.html.erb (Duration: 15.9ms | Allocations: 10269)
+Completed 200 OK in 18ms (Views: 17.1ms | ActiveRecord: 0.1ms | Allocations: 11187)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-02-07 10:17:34 -0800
+Processing by ProductsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:23
+  Rendered products/index.html.erb within layouts/application (Duration: 5.6ms | Allocations: 3286)
+  Rendered layout layouts/application.html.erb (Duration: 16.2ms | Allocations: 10250)
+Completed 200 OK in 19ms (Views: 17.4ms | ActiveRecord: 0.1ms | Allocations: 11190)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-02-07 10:18:15 -0800
+Processing by ProductsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:23
+  Rendered products/index.html.erb within layouts/application (Duration: 7.8ms | Allocations: 4250)
+  Rendered layout layouts/application.html.erb (Duration: 15.5ms | Allocations: 11214)
+Completed 200 OK in 18ms (Views: 16.8ms | ActiveRecord: 0.1ms | Allocations: 12154)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-02-07 10:18:53 -0800
+Processing by ProductsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:23
+  Rendered products/index.html.erb within layouts/application (Duration: 7.7ms | Allocations: 4399)
+  Rendered layout layouts/application.html.erb (Duration: 20.6ms | Allocations: 11360)
+Completed 200 OK in 23ms (Views: 21.9ms | ActiveRecord: 0.2ms | Allocations: 12300)
+
+
+Started GET "/products/2" for 127.0.0.1 at 2024-02-07 10:18:55 -0800
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:63:in `set_product'
+  Rendering layout layouts/application.html.erb
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/_product.html.erb (Duration: 0.6ms | Allocations: 322)
+  Rendered products/show.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1720)
+  Rendered layout layouts/application.html.erb (Duration: 7.2ms | Allocations: 7539)
+Completed 200 OK in 21ms (Views: 7.6ms | ActiveRecord: 0.2ms | Allocations: 12699)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-02-07 10:21:02 -0800
+Processing by ProductsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:23
+  Rendered products/index.html.erb within layouts/application (Duration: 12.1ms | Allocations: 4820)
+  Rendered layout layouts/application.html.erb (Duration: 17.7ms | Allocations: 10692)
+Completed 200 OK in 21ms (Views: 19.3ms | ActiveRecord: 0.1ms | Allocations: 11639)
+
+
+Started GET "/products/2/edit" for 127.0.0.1 at 2024-02-07 10:21:03 -0800
+Processing by ProductsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:63:in `set_product'
+  Rendering layout layouts/application.html.erb
+  Rendering products/edit.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 4.2ms | Allocations: 2218)
+  Rendered products/edit.html.erb within layouts/application (Duration: 6.5ms | Allocations: 2567)
+  Rendered layout layouts/application.html.erb (Duration: 14.7ms | Allocations: 8180)
+Completed 200 OK in 18ms (Views: 15.3ms | ActiveRecord: 0.2ms | Allocations: 9026)
+
+
+Started DELETE "/products/2?_method=delete" for 127.0.0.1 at 2024-02-07 10:21:09 -0800
+Processing by ProductsController#destroy as TURBO_STREAM
+  Parameters: {"id"=>"2"}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:63:in `set_product'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:52:in `destroy'
+  [1m[36mProduct Destroy (0.6ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = ?[0m  [["id", 2]]
+  ↳ app/controllers/products_controller.rb:52:in `destroy'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:52:in `destroy'
+Redirected to http://127.0.0.1:3333/products
+Completed 302 Found in 7ms (ActiveRecord: 1.7ms | Allocations: 3114)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-02-07 10:21:09 -0800
+Processing by ProductsController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:23
+  Rendered products/index.html.erb within layouts/application (Duration: 3.7ms | Allocations: 3288)
+  Rendered layout layouts/application.html.erb (Duration: 8.0ms | Allocations: 8728)
+Completed 200 OK in 9ms (Views: 8.2ms | ActiveRecord: 0.1ms | Allocations: 9094)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-02-07 10:21:11 -0800
+Processing by ProductsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:23
+  Rendered products/index.html.erb within layouts/application (Duration: 4.5ms | Allocations: 3035)
+  Rendered layout layouts/application.html.erb (Duration: 10.3ms | Allocations: 8457)
+Completed 200 OK in 11ms (Views: 10.6ms | ActiveRecord: 0.1ms | Allocations: 8734)
+
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mProduct Delete All (0.4ms)[0m  [1m[31mDELETE FROM "products"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "image_url", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Docker for Rails Developers"], ["description", "<p>\n      <em>Build, Ship, and Run Your Applications Everywhere</em> Docker does\n      for DevOps what Rails did for web development—it gives you a new set\n      of superpowers. Gone are “works on my machine” woes and lengthy setup\n      tasks, replaced instead by a simple, consistent, Docker-based\n      development environment that will have your team up and running in\n      seconds.  Gain hands-on, real-world experience with a tool that’s\n      rapidly becoming fundamental to software development. Go from zero all\n      the way to production as Docker transforms the massive leap of\n      deploying your app in the cloud into a baby step.\n      </p>"], ["image_url", "ridocker.jpg"], ["price", 19.95], ["created_at", "2024-02-07 18:21:19.604280"], ["updated_at", "2024-02-07 18:21:19.604280"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "image_url", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Design and Build Great Web APIs"], ["description", "<p>\n      <em>Robust, Reliable, and Resilient</em>\n      APIs are transforming the business world at an increasing pace. Gain\n      the essential skills needed to quickly design, build, and deploy\n      quality web APIs that are robust, reliable, and resilient. Go from\n      initial design through prototyping and implementation to deployment of\n      mission-critical APIs for your organization. Test, secure, and deploy\n      your API with confidence and avoid the “release into production”\n      panic. Tackle just about any API challenge with more than a dozen\n      open-source utilities and common programming patterns you can apply\n      right away.\n      </p>"], ["image_url", "maapis.jpg"], ["price", 24.95], ["created_at", "2024-02-07 18:21:19.605725"], ["updated_at", "2024-02-07 18:21:19.605725"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "image_url", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Modern CSS with Tailwind"], ["description", "<p>\n      <em>Flexible Styling Without the Fuss</em>\n      Tailwind CSS is an exciting new CSS framework that allows you to\n      design your site by composing simple utility classes to create complex\n      effects. With Tailwind, you can style your text, move your items on\n      the page, design complex page layouts, and adapt your design for\n      devices from a phone to a wide-screen monitor. With this book, you’ll\n      learn how to use the Tailwind for its flexibility and its consistency,\n      from the smallest detail of your typography to the entire design of\n      your site.\n      </p>"], ["image_url", "tailwind.jpg"], ["price", 18.95], ["created_at", "2024-02-07 18:21:19.606806"], ["updated_at", "2024-02-07 18:21:19.606806"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/products" for 127.0.0.1 at 2024-02-07 10:21:22 -0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:23
+  Rendered products/index.html.erb within layouts/application (Duration: 44.3ms | Allocations: 49379)
+  Rendered layout layouts/application.html.erb (Duration: 52.6ms | Allocations: 72202)
+Completed 200 OK in 58ms (Views: 53.6ms | ActiveRecord: 0.3ms | Allocations: 76656)
+
+
