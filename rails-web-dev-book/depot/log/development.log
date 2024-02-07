@@ -1,0 +1,112 @@
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateProducts (20240207174935)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" text, "image_url" varchar, "price" decimal(8,2), "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20240207174935"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2024-02-07 17:52:32.666659"], ["updated_at", "2024-02-07 17:52:32.666659"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2024-02-07 09:53:20 -0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/charlie/.rbenv/versions/3.1.3/lib/ruby/gems/3.1.0/gems/railties-7.0.8/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/charlie/.rbenv/versions/3.1.3/lib/ruby/gems/3.1.0/gems/railties-7.0.8/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.0ms | Allocations: 580)
+Completed 200 OK in 21ms (Views: 4.0ms | ActiveRecord: 0.0ms | Allocations: 6606)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-02-07 09:53:25 -0800
+Processing by ProductsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:12
+  Rendered collection of templates [0 times] (Duration: 0.0ms | Allocations: 31)
+  Rendered products/index.html.erb within layouts/application (Duration: 3.6ms | Allocations: 1740)
+  Rendered layout layouts/application.html.erb (Duration: 201.6ms | Allocations: 131466)
+Completed 200 OK in 206ms (Views: 202.5ms | ActiveRecord: 0.2ms | Allocations: 133364)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2024-02-07 09:53:27 -0800
+Processing by ProductsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 9.4ms | Allocations: 3716)
+  Rendered products/new.html.erb within layouts/application (Duration: 10.2ms | Allocations: 4058)
+  Rendered layout layouts/application.html.erb (Duration: 16.3ms | Allocations: 9701)
+Completed 200 OK in 24ms (Views: 17.0ms | ActiveRecord: 0.5ms | Allocations: 15073)
+
+
+Started GET "/" for 127.0.0.1 at 2024-02-07 09:54:56 -0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/charlie/.rbenv/versions/3.1.3/lib/ruby/gems/3.1.0/gems/railties-7.0.8/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/charlie/.rbenv/versions/3.1.3/lib/ruby/gems/3.1.0/gems/railties-7.0.8/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.6ms | Allocations: 474)
+Completed 200 OK in 4ms (Views: 1.3ms | ActiveRecord: 0.0ms | Allocations: 4013)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-02-07 09:54:59 -0800
+Processing by ProductsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:12
+  Rendered collection of templates [0 times] (Duration: 0.1ms | Allocations: 31)
+  Rendered products/index.html.erb within layouts/application (Duration: 4.9ms | Allocations: 1882)
+  Rendered layout layouts/application.html.erb (Duration: 41.5ms | Allocations: 51340)
+Completed 200 OK in 46ms (Views: 42.9ms | ActiveRecord: 0.2ms | Allocations: 53201)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2024-02-07 09:55:00 -0800
+Processing by ProductsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 5.3ms | Allocations: 3284)
+  Rendered products/new.html.erb within layouts/application (Duration: 6.3ms | Allocations: 3621)
+  Rendered layout layouts/application.html.erb (Duration: 12.6ms | Allocations: 9263)
+Completed 200 OK in 27ms (Views: 13.3ms | ActiveRecord: 2.1ms | Allocations: 14621)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2024-02-07 09:57:32 -0800
+Processing by ProductsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 3.0ms | Allocations: 2204)
+  Rendered products/new.html.erb within layouts/application (Duration: 4.3ms | Allocations: 2522)
+  Rendered layout layouts/application.html.erb (Duration: 11.3ms | Allocations: 8419)
+Completed 200 OK in 14ms (Views: 12.8ms | ActiveRecord: 0.0ms | Allocations: 9380)
+
+
+Started POST "/products" for 127.0.0.1 at 2024-02-07 09:59:46 -0800
+Processing by ProductsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "product"=>{"title"=>"Docker for Rails Developers", "description"=>"<p>\n<em>Build, Ship, and Run your Applications Everywhere</em> Docker does for devOps what Rails did for web development - it gives you a new set of superpowers. Gone are \"works on my machine\" woes and lengthy setup tasks, replaced instead by a simple, consistent, Docker-based development environment that will have your team up and running in seconds.\n</p>", "image_url"=>"ridocker.jpg", "price"=>"19.95"}, "commit"=>"Create Product"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:27:in `block in create'
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "image_url", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Docker for Rails Developers"], ["description", "<p>\n<em>Build, Ship, and Run your Applications Everywhere</em> Docker does for devOps what Rails did for web development - it gives you a new set of superpowers. Gone are \"works on my machine\" woes and lengthy setup tasks, replaced instead by a simple, consistent, Docker-based development environment that will have your team up and running in seconds.\n</p>"], ["image_url", "ridocker.jpg"], ["price", 19.95], ["created_at", "2024-02-07 17:59:46.937428"], ["updated_at", "2024-02-07 17:59:46.937428"]]
+  ↳ app/controllers/products_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:27:in `block in create'
+Redirected to http://127.0.0.1:3333/products/1
+Completed 302 Found in 6ms (ActiveRecord: 1.0ms | Allocations: 4018)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2024-02-07 09:59:46 -0800
+Processing by ProductsController#show as TURBO_STREAM
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:63:in `set_product'
+  Rendering layout layouts/application.html.erb
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/_product.html.erb (Duration: 0.5ms | Allocations: 349)
+  Rendered products/show.html.erb within layouts/application (Duration: 3.2ms | Allocations: 1907)
+  Rendered layout layouts/application.html.erb (Duration: 8.7ms | Allocations: 7714)
+Completed 200 OK in 20ms (Views: 8.9ms | ActiveRecord: 0.1ms | Allocations: 10553)
+
+
