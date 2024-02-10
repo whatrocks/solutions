@@ -133,3 +133,1670 @@ Completed 302 Found in 1ms (ActiveRecord: 0.2ms | Allocations: 1038)
   [1m[36mProduct Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
   [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixtures Load (0.7ms)[0m  [1m[31mDELETE FROM "products";
+INSERT INTO "products" ("id", "title", "description", "image_url", "price", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', 'MyString', 9.99, '2024-02-07 19:06:37.181804', '2024-02-07 19:06:37.181804');
+INSERT INTO "products" ("id", "title", "description", "image_url", "price", "created_at", "updated_at") VALUES (298486374, 'MyString', 'MyText', 'MyString', 9.99, '2024-02-07 19:06:37.181804', '2024-02-07 19:06:37.181804')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_key_check[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------
+ProductTest: test_the_truth
+---------------------------
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------
+ProductsControllerTest: test_should_create_product
+--------------------------------------------------
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mProduct Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+Started POST "/products" for 127.0.0.1 at 2024-02-07 11:06:37 -0800
+Processing by ProductsController#create as HTML
+  Parameters: {"product"=>{"description"=>"MyText", "image_url"=>"MyString", "price"=>"9.99", "title"=>"MyString"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 2.3ms | Allocations: 4491)
+  Rendered products/new.html.erb within layouts/application (Duration: 2.9ms | Allocations: 5071)
+  Rendered layout layouts/application.html.erb (Duration: 80.3ms | Allocations: 89184)
+Completed 422 Unprocessable Entity in 86ms (Views: 83.6ms | ActiveRecord: 0.1ms | Allocations: 94558)
+  [1m[36mProduct Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------
+ProductsControllerTest: test_should_get_edit
+--------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/products/980190962/edit" for 127.0.0.1 at 2024-02-07 11:06:37 -0800
+Processing by ProductsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/edit.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 0.6ms | Allocations: 1393)
+  Rendered products/edit.html.erb within layouts/application (Duration: 1.0ms | Allocations: 1733)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | Allocations: 3539)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms | Allocations: 4292)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------
+ProductsControllerTest: test_should_get_new
+-------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/products/new" for 127.0.0.1 at 2024-02-07 11:06:37 -0800
+Processing by ProductsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 0.4ms | Allocations: 1253)
+  Rendered products/new.html.erb within layouts/application (Duration: 0.5ms | Allocations: 1335)
+  Rendered layout layouts/application.html.erb (Duration: 0.9ms | Allocations: 3151)
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.0ms | Allocations: 3437)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------
+ProductsControllerTest: test_should_update_product
+--------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started PATCH "/products/980190962" for 127.0.0.1 at 2024-02-07 11:06:37 -0800
+Processing by ProductsController#update as HTML
+  Parameters: {"product"=>{"description"=>"MyText", "image_url"=>"MyString", "price"=>"9.99", "title"=>"MyString"}, "id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? AND "products"."id" != ? LIMIT ?[0m  [["title", "MyString"], ["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering layout layouts/application.html.erb
+  Rendering products/edit.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 0.8ms | Allocations: 2636)
+  Rendered products/edit.html.erb within layouts/application (Duration: 0.9ms | Allocations: 2765)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | Allocations: 4512)
+Completed 422 Unprocessable Entity in 4ms (Views: 3.7ms | ActiveRecord: 0.1ms | Allocations: 5544)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------
+ProductsControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/products" for 127.0.0.1 at 2024-02-07 11:06:37 -0800
+Processing by ProductsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (Duration: 2.5ms | Allocations: 2218)
+  Rendered layout layouts/application.html.erb (Duration: 2.6ms | Allocations: 2267)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 2595)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------------
+ProductsControllerTest: test_should_destroy_product
+---------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mProduct Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+Started DELETE "/products/980190962" for 127.0.0.1 at 2024-02-07 11:06:37 -0800
+Processing by ProductsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Destroy (0.3ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = ?[0m  [["id", 980190962]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/products
+Completed 302 Found in 1ms (ActiveRecord: 0.4ms | Allocations: 804)
+  [1m[36mProduct Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------
+ProductsControllerTest: test_should_show_product
+------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/products/980190962" for 127.0.0.1 at 2024-02-07 11:06:37 -0800
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/_product.html.erb (Duration: 0.3ms | Allocations: 357)
+  Rendered products/show.html.erb within layouts/application (Duration: 1.3ms | Allocations: 1331)
+  Rendered layout layouts/application.html.erb (Duration: 1.7ms | Allocations: 3149)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.0ms | Allocations: 3615)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixtures Load (0.2ms)[0m  [1m[31mDELETE FROM "products";
+INSERT INTO "products" ("id", "title", "description", "image_url", "price", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', 'MyString', 9.99, '2024-02-07 19:08:40.100212', '2024-02-07 19:08:40.100212');
+INSERT INTO "products" ("id", "title", "description", "image_url", "price", "created_at", "updated_at") VALUES (298486374, 'MyString', 'MyText', 'MyString', 9.99, '2024-02-07 19:08:40.100212', '2024-02-07 19:08:40.100212')[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_key_check[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------
+ProductTest: test_product_attributes_must_not_be_empty
+------------------------------------------------------
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixtures Load (0.2ms)[0m  [1m[31mDELETE FROM "products";
+INSERT INTO "products" ("id", "title", "description", "image_url", "price", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', 'MyString', 9.99, '2024-02-07 19:08:55.648348', '2024-02-07 19:08:55.648348');
+INSERT INTO "products" ("id", "title", "description", "image_url", "price", "created_at", "updated_at") VALUES (298486374, 'MyString', 'MyText', 'MyString', 9.99, '2024-02-07 19:08:55.648348', '2024-02-07 19:08:55.648348')[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_key_check[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------
+ProductTest: test_product_attributes_must_not_be_empty
+------------------------------------------------------
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixtures Load (0.2ms)[0m  [1m[31mDELETE FROM "products";
+INSERT INTO "products" ("id", "title", "description", "image_url", "price", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', 'MyString', 9.99, '2024-02-07 19:09:20.228924', '2024-02-07 19:09:20.228924');
+INSERT INTO "products" ("id", "title", "description", "image_url", "price", "created_at", "updated_at") VALUES (298486374, 'MyString', 'MyText', 'MyString', 9.99, '2024-02-07 19:09:20.228924', '2024-02-07 19:09:20.228924')[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_key_check[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------
+ProductTest: test_product_attributes_must_not_be_empty
+------------------------------------------------------
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixtures Load (0.6ms)[0m  [1m[31mDELETE FROM "products";
+INSERT INTO "products" ("id", "title", "description", "image_url", "price", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', 'MyString', 9.99, '2024-02-07 19:12:05.189481', '2024-02-07 19:12:05.189481');
+INSERT INTO "products" ("id", "title", "description", "image_url", "price", "created_at", "updated_at") VALUES (298486374, 'MyString', 'MyText', 'MyString', 9.99, '2024-02-07 19:12:05.189481', '2024-02-07 19:12:05.189481')[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_key_check[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------
+ProductTest: test_product_attributes_must_not_be_empty
+------------------------------------------------------
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------
+ProductTest: test_product_price_must_be_positive
+------------------------------------------------
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixtures Load (0.2ms)[0m  [1m[31mDELETE FROM "products";
+INSERT INTO "products" ("id", "title", "description", "image_url", "price", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', 'MyString', 9.99, '2024-02-07 19:15:32.844344', '2024-02-07 19:15:32.844344');
+INSERT INTO "products" ("id", "title", "description", "image_url", "price", "created_at", "updated_at") VALUES (298486374, 'MyString', 'MyText', 'MyString', 9.99, '2024-02-07 19:15:32.844344', '2024-02-07 19:15:32.844344')[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_key_check[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------
+ProductTest: test_image_url
+---------------------------
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------
+ProductTest: test_product_price_must_be_positive
+------------------------------------------------
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------
+ProductTest: test_product_attributes_must_not_be_empty
+------------------------------------------------------
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixtures Load (0.6ms)[0m  [1m[31mDELETE FROM "products";
+INSERT INTO "products" ("id", "title", "description", "image_url", "price", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', 'lorem.jpg', 9.99, '2024-02-07 19:18:34.917825', '2024-02-07 19:18:34.917825');
+INSERT INTO "products" ("id", "title", "description", "image_url", "price", "created_at", "updated_at") VALUES (298486374, 'MyString', 'MyText', 'lorem.jpg', 9.99, '2024-02-07 19:18:34.917825', '2024-02-07 19:18:34.917825');
+INSERT INTO "products" ("id", "title", "description", "image_url", "price", "created_at", "updated_at") VALUES (207281424, 'Programming Ruby 1.9', 'Ruby is the fastest growing and most existing programming language out there. If you need to get working progreams delivered fast, you should add Ruby to your toolbox.', 'ruby.jpg', 49.95, '2024-02-07 19:18:34.917825', '2024-02-07 19:18:34.917825')[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_key_check[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------
+ProductTest: test_product_price_must_be_positive
+------------------------------------------------
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------
+ProductTest: test_image_url
+---------------------------
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------
+ProductTest: test_product_attributes_must_not_be_empty
+------------------------------------------------------
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixtures Load (0.2ms)[0m  [1m[31mDELETE FROM "products";
+INSERT INTO "products" ("id", "title", "description", "image_url", "price", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', 'lorem.jpg', 9.99, '2024-02-07 19:18:38.137725', '2024-02-07 19:18:38.137725');
+INSERT INTO "products" ("id", "title", "description", "image_url", "price", "created_at", "updated_at") VALUES (298486374, 'MyString', 'MyText', 'lorem.jpg', 9.99, '2024-02-07 19:18:38.137725', '2024-02-07 19:18:38.137725');
+INSERT INTO "products" ("id", "title", "description", "image_url", "price", "created_at", "updated_at") VALUES (207281424, 'Programming Ruby 1.9', 'Ruby is the fastest growing and most existing programming language out there. If you need to get working progreams delivered fast, you should add Ruby to your toolbox.', 'ruby.jpg', 49.95, '2024-02-07 19:18:38.137725', '2024-02-07 19:18:38.137725')[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_key_check[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------
+ProductTest: test_product_price_must_be_positive
+------------------------------------------------
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------
+ProductTest: test_image_url
+---------------------------
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------
+ProductTest: test_product_attributes_must_not_be_empty
+------------------------------------------------------
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------
+ProductsControllerTest: test_should_get_new
+-------------------------------------------
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/products/new" for 127.0.0.1 at 2024-02-07 11:18:38 -0800
+Processing by ProductsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 1.7ms | Allocations: 2714)
+  Rendered products/new.html.erb within layouts/application (Duration: 2.2ms | Allocations: 3310)
+  Rendered layout layouts/application.html.erb (Duration: 58.6ms | Allocations: 51090)
+Completed 200 OK in 63ms (Views: 59.9ms | ActiveRecord: 0.0ms | Allocations: 54529)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------
+ProductsControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/products" for 127.0.0.1 at 2024-02-07 11:18:38 -0800
+Processing by ProductsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (Duration: 4.3ms | Allocations: 3414)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | Allocations: 5183)
+Completed 200 OK in 5ms (Views: 4.8ms | ActiveRecord: 0.0ms | Allocations: 5575)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------
+ProductsControllerTest: test_should_get_edit
+--------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/products/980190962/edit" for 127.0.0.1 at 2024-02-07 11:18:38 -0800
+Processing by ProductsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/edit.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 0.7ms | Allocations: 1345)
+  Rendered products/edit.html.erb within layouts/application (Duration: 0.9ms | Allocations: 1631)
+  Rendered layout layouts/application.html.erb (Duration: 1.4ms | Allocations: 3377)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms | Allocations: 3926)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------------
+ProductsControllerTest: test_should_destroy_product
+---------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mProduct Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+Started DELETE "/products/980190962" for 127.0.0.1 at 2024-02-07 11:18:38 -0800
+Processing by ProductsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Destroy (0.3ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = ?[0m  [["id", 980190962]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/products
+Completed 302 Found in 1ms (ActiveRecord: 0.4ms | Allocations: 1003)
+  [1m[36mProduct Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------
+ProductsControllerTest: test_should_update_product
+--------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started PATCH "/products/980190962" for 127.0.0.1 at 2024-02-07 11:18:38 -0800
+Processing by ProductsController#update as HTML
+  Parameters: {"product"=>{"description"=>"MyText", "image_url"=>"lorem.jpg", "price"=>"9.99", "title"=>"MyString"}, "id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? AND "products"."id" != ? LIMIT ?[0m  [["title", "MyString"], ["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering layout layouts/application.html.erb
+  Rendering products/edit.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 0.7ms | Allocations: 2252)
+  Rendered products/edit.html.erb within layouts/application (Duration: 0.8ms | Allocations: 2388)
+  Rendered layout layouts/application.html.erb (Duration: 1.2ms | Allocations: 4191)
+Completed 422 Unprocessable Entity in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 5296)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------
+ProductsControllerTest: test_should_create_product
+--------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mProduct Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+Started POST "/products" for 127.0.0.1 at 2024-02-07 11:18:38 -0800
+Processing by ProductsController#create as HTML
+  Parameters: {"product"=>{"description"=>"MyText", "image_url"=>"lorem.jpg", "price"=>"9.99", "title"=>"MyString"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 0.6ms | Allocations: 2126)
+  Rendered products/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 2209)
+  Rendered layout layouts/application.html.erb (Duration: 1.1ms | Allocations: 4016)
+Completed 422 Unprocessable Entity in 2ms (Views: 1.2ms | ActiveRecord: 0.0ms | Allocations: 5045)
+  [1m[36mProduct Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------
+ProductsControllerTest: test_should_show_product
+------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/products/980190962" for 127.0.0.1 at 2024-02-07 11:18:38 -0800
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/_product.html.erb (Duration: 0.2ms | Allocations: 357)
+  Rendered products/show.html.erb within layouts/application (Duration: 0.8ms | Allocations: 1359)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | Allocations: 3168)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.0ms | Allocations: 3615)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixtures Load (0.2ms)[0m  [1m[31mDELETE FROM "products";
+INSERT INTO "products" ("id", "title", "description", "image_url", "price", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', 'lorem.jpg', 9.99, '2024-02-07 19:20:45.274669', '2024-02-07 19:20:45.274669');
+INSERT INTO "products" ("id", "title", "description", "image_url", "price", "created_at", "updated_at") VALUES (298486374, 'MyString', 'MyText', 'lorem.jpg', 9.99, '2024-02-07 19:20:45.274669', '2024-02-07 19:20:45.274669');
+INSERT INTO "products" ("id", "title", "description", "image_url", "price", "created_at", "updated_at") VALUES (207281424, 'Programming Ruby 1.9', 'Ruby is the fastest growing and most existing programming language out there. If you need to get working progreams delivered fast, you should add Ruby to your toolbox.', 'ruby.jpg', 49.95, '2024-02-07 19:20:45.274669', '2024-02-07 19:20:45.274669')[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_key_check[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------
+ProductsControllerTest: test_should_get_new
+-------------------------------------------
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/products/new" for 127.0.0.1 at 2024-02-07 11:20:45 -0800
+Processing by ProductsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 1.6ms | Allocations: 2964)
+  Rendered products/new.html.erb within layouts/application (Duration: 2.0ms | Allocations: 3560)
+  Rendered layout layouts/application.html.erb (Duration: 51.4ms | Allocations: 51440)
+Completed 200 OK in 55ms (Views: 52.4ms | ActiveRecord: 0.0ms | Allocations: 55529)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------
+ProductsControllerTest: test_should_update_product
+--------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started PATCH "/products/980190962" for 127.0.0.1 at 2024-02-07 11:20:45 -0800
+Processing by ProductsController#update as HTML
+  Parameters: {"product"=>{"description"=>"MyText", "image_url"=>"lorem.jpg", "price"=>"9.99", "title"=>"MyString"}, "id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? AND "products"."id" != ? LIMIT ?[0m  [["title", "MyString"], ["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering layout layouts/application.html.erb
+  Rendering products/edit.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 0.8ms | Allocations: 2302)
+  Rendered products/edit.html.erb within layouts/application (Duration: 1.0ms | Allocations: 2629)
+  Rendered layout layouts/application.html.erb (Duration: 1.4ms | Allocations: 4436)
+Completed 422 Unprocessable Entity in 3ms (Views: 1.6ms | ActiveRecord: 0.1ms | Allocations: 6401)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------
+ProductsControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/products" for 127.0.0.1 at 2024-02-07 11:20:45 -0800
+Processing by ProductsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (Duration: 2.5ms | Allocations: 3249)
+  Rendered layout layouts/application.html.erb (Duration: 2.9ms | Allocations: 5000)
+Completed 200 OK in 3ms (Views: 3.0ms | ActiveRecord: 0.0ms | Allocations: 5302)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------
+ProductsControllerTest: test_should_create_product
+--------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mProduct Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+Started POST "/products" for 127.0.0.1 at 2024-02-07 11:20:45 -0800
+Processing by ProductsController#create as HTML
+  Parameters: {"product"=>{"description"=>"MyText", "image_url"=>"lorem.jpg", "price"=>"9.99", "title"=>"MyString"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 0.8ms | Allocations: 2126)
+  Rendered products/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 2209)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | Allocations: 4014)
+Completed 422 Unprocessable Entity in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 5049)
+  [1m[36mProduct Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------
+ProductsControllerTest: test_should_get_edit
+--------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/products/980190962/edit" for 127.0.0.1 at 2024-02-07 11:20:45 -0800
+Processing by ProductsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/edit.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 0.4ms | Allocations: 1252)
+  Rendered products/edit.html.erb within layouts/application (Duration: 0.5ms | Allocations: 1381)
+  Rendered layout layouts/application.html.erb (Duration: 0.9ms | Allocations: 3127)
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.0ms | Allocations: 3457)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------
+ProductsControllerTest: test_should_show_product
+------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/products/980190962" for 127.0.0.1 at 2024-02-07 11:20:45 -0800
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/_product.html.erb (Duration: 0.2ms | Allocations: 357)
+  Rendered products/show.html.erb within layouts/application (Duration: 0.9ms | Allocations: 1358)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | Allocations: 3167)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.0ms | Allocations: 3604)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------------
+ProductsControllerTest: test_should_destroy_product
+---------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mProduct Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+Started DELETE "/products/980190962" for 127.0.0.1 at 2024-02-07 11:20:45 -0800
+Processing by ProductsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Destroy (0.2ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = ?[0m  [["id", 980190962]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/products
+Completed 302 Found in 1ms (ActiveRecord: 0.2ms | Allocations: 780)
+  [1m[36mProduct Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------
+ProductTest: test_image_url
+---------------------------
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------
+ProductTest: test_product_price_must_be_positive
+------------------------------------------------
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------
+ProductTest: test_product_attributes_must_not_be_empty
+------------------------------------------------------
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixtures Load (0.2ms)[0m  [1m[31mDELETE FROM "products";
+INSERT INTO "products" ("id", "title", "description", "image_url", "price", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', 'lorem.jpg', 9.99, '2024-02-07 19:22:42.073842', '2024-02-07 19:22:42.073842');
+INSERT INTO "products" ("id", "title", "description", "image_url", "price", "created_at", "updated_at") VALUES (298486374, 'MyString', 'MyText', 'lorem.jpg', 9.99, '2024-02-07 19:22:42.073842', '2024-02-07 19:22:42.073842');
+INSERT INTO "products" ("id", "title", "description", "image_url", "price", "created_at", "updated_at") VALUES (207281424, 'Programming Ruby 1.9', 'Ruby is the fastest growing and most existing programming language out there. If you need to get working progreams delivered fast, you should add Ruby to your toolbox.', 'ruby.jpg', 49.95, '2024-02-07 19:22:42.073842', '2024-02-07 19:22:42.073842')[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_key_check[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------
+ProductsControllerTest: test_should_get_edit
+--------------------------------------------
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/products/980190962/edit" for 127.0.0.1 at 2024-02-07 11:22:42 -0800
+Processing by ProductsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/edit.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 1.6ms | Allocations: 3074)
+  Rendered products/edit.html.erb within layouts/application (Duration: 2.0ms | Allocations: 3758)
+  Rendered layout layouts/application.html.erb (Duration: 51.3ms | Allocations: 51447)
+Completed 200 OK in 55ms (Views: 52.3ms | ActiveRecord: 0.0ms | Allocations: 55953)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------
+ProductsControllerTest: test_should_update_product
+--------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started PATCH "/products/980190962" for 127.0.0.1 at 2024-02-07 11:22:42 -0800
+Processing by ProductsController#update as HTML
+  Parameters: {"product"=>{"description"=>"MyText", "image_url"=>"lorem.jpg", "price"=>"9.99", "title"=>"MyString"}, "id"=>"980190962"}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? AND "products"."id" != ? LIMIT ?[0m  [["title", "MyString"], ["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering layout layouts/application.html.erb
+  Rendering products/edit.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 0.8ms | Allocations: 2276)
+  Rendered products/edit.html.erb within layouts/application (Duration: 0.8ms | Allocations: 2413)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | Allocations: 4220)
+Completed 422 Unprocessable Entity in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 5919)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------------
+ProductsControllerTest: test_should_destroy_product
+---------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mProduct Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+Started DELETE "/products/980190962" for 127.0.0.1 at 2024-02-07 11:22:42 -0800
+Processing by ProductsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Destroy (0.1ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = ?[0m  [["id", 980190962]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/products
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms | Allocations: 861)
+  [1m[36mProduct Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------
+ProductsControllerTest: test_should_show_product
+------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/products/980190962" for 127.0.0.1 at 2024-02-07 11:22:42 -0800
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/_product.html.erb (Duration: 0.2ms | Allocations: 357)
+  Rendered products/show.html.erb within layouts/application (Duration: 0.9ms | Allocations: 1336)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | Allocations: 3145)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.0ms | Allocations: 3583)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------
+ProductsControllerTest: test_should_create_product
+--------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mProduct Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+Started POST "/products" for 127.0.0.1 at 2024-02-07 11:22:42 -0800
+Processing by ProductsController#create as HTML
+  Parameters: {"product"=>{"description"=>"MyText", "image_url"=>"lorem.jpg", "price"=>"9.99", "title"=>"MyString"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 0.8ms | Allocations: 2149)
+  Rendered products/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 2401)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | Allocations: 4206)
+Completed 422 Unprocessable Entity in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms | Allocations: 5343)
+  [1m[36mProduct Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------
+ProductsControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/products" for 127.0.0.1 at 2024-02-07 11:22:42 -0800
+Processing by ProductsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (Duration: 1.5ms | Allocations: 3139)
+  Rendered layout layouts/application.html.erb (Duration: 1.9ms | Allocations: 4890)
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.0ms | Allocations: 5191)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------
+ProductsControllerTest: test_should_get_new
+-------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/products/new" for 127.0.0.1 at 2024-02-07 11:22:42 -0800
+Processing by ProductsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 0.4ms | Allocations: 1158)
+  Rendered products/new.html.erb within layouts/application (Duration: 0.4ms | Allocations: 1233)
+  Rendered layout layouts/application.html.erb (Duration: 0.8ms | Allocations: 2987)
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.0ms | Allocations: 3214)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------------------------
+ProductTest: test_product_is_not_valid_without_a_unique_title
+-------------------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 207281424], ["LIMIT", 1]]
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "Programming Ruby 1.9"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------
+ProductTest: test_product_attributes_must_not_be_empty
+------------------------------------------------------
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------
+ProductTest: test_product_price_must_be_positive
+------------------------------------------------
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------
+ProductTest: test_image_url
+---------------------------
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixtures Load (0.2ms)[0m  [1m[31mDELETE FROM "products";
+INSERT INTO "products" ("id", "title", "description", "image_url", "price", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', 'lorem.jpg', 9.99, '2024-02-10 05:32:52.045037', '2024-02-10 05:32:52.045037');
+INSERT INTO "products" ("id", "title", "description", "image_url", "price", "created_at", "updated_at") VALUES (298486374, 'MyString', 'MyText', 'lorem.jpg', 9.99, '2024-02-10 05:32:52.045037', '2024-02-10 05:32:52.045037');
+INSERT INTO "products" ("id", "title", "description", "image_url", "price", "created_at", "updated_at") VALUES (207281424, 'Programming Ruby 1.9', 'Ruby is the fastest growing and most existing programming language out there. If you need to get working progreams delivered fast, you should add Ruby to your toolbox.', 'ruby.jpg', 49.95, '2024-02-10 05:32:52.045037', '2024-02-10 05:32:52.045037')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_key_check[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------
+ProductTest: test_image_url
+---------------------------
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------
+ProductTest: test_product_attributes_must_not_be_empty
+------------------------------------------------------
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------
+ProductTest: test_product_price_must_be_positive
+------------------------------------------------
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------------------------
+ProductTest: test_product_is_not_valid_without_a_unique_title
+-------------------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 207281424], ["LIMIT", 1]]
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "Programming Ruby 1.9"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------
+ProductsControllerTest: test_should_show_product
+------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/products/980190962" for 127.0.0.1 at 2024-02-09 21:32:52 -0800
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/_product.html.erb (Duration: 0.4ms | Allocations: 380)
+  Rendered products/show.html.erb within layouts/application (Duration: 2.8ms | Allocations: 1859)
+  Rendered layout layouts/application.html.erb (Duration: 56.3ms | Allocations: 49382)
+Completed 200 OK in 61ms (Views: 57.6ms | ActiveRecord: 0.0ms | Allocations: 53287)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------
+ProductsControllerTest: test_should_get_edit
+--------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/products/980190962/edit" for 127.0.0.1 at 2024-02-09 21:32:52 -0800
+Processing by ProductsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/edit.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 3.0ms | Allocations: 2700)
+  Rendered products/edit.html.erb within layouts/application (Duration: 3.6ms | Allocations: 3114)
+  Rendered layout layouts/application.html.erb (Duration: 4.3ms | Allocations: 4925)
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.0ms | Allocations: 5401)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------
+ProductsControllerTest: test_should_get_new
+-------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/products/new" for 127.0.0.1 at 2024-02-09 21:32:52 -0800
+Processing by ProductsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 0.7ms | Allocations: 1201)
+  Rendered products/new.html.erb within layouts/application (Duration: 1.1ms | Allocations: 1452)
+  Rendered layout layouts/application.html.erb (Duration: 1.6ms | Allocations: 3210)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.0ms | Allocations: 3554)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------
+ProductsControllerTest: test_should_create_product
+--------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mProduct Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+Started POST "/products" for 127.0.0.1 at 2024-02-09 21:32:52 -0800
+Processing by ProductsController#create as HTML
+  Parameters: {"product"=>{"description"=>"MyText", "image_url"=>"lorem.jpg", "price"=>"9.99", "title"=>"MyString"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 0.7ms | Allocations: 2152)
+  Rendered products/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 2235)
+  Rendered layout layouts/application.html.erb (Duration: 1.2ms | Allocations: 4040)
+Completed 422 Unprocessable Entity in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 5233)
+  [1m[36mProduct Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------------
+ProductsControllerTest: test_should_destroy_product
+---------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mProduct Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+Started DELETE "/products/980190962" for 127.0.0.1 at 2024-02-09 21:32:52 -0800
+Processing by ProductsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Destroy (0.2ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = ?[0m  [["id", 980190962]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/products
+Completed 302 Found in 1ms (ActiveRecord: 0.3ms | Allocations: 767)
+  [1m[36mProduct Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------
+ProductsControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/products" for 127.0.0.1 at 2024-02-09 21:32:52 -0800
+Processing by ProductsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (Duration: 4.0ms | Allocations: 3124)
+  Rendered layout layouts/application.html.erb (Duration: 4.6ms | Allocations: 4875)
+Completed 200 OK in 5ms (Views: 4.7ms | ActiveRecord: 0.0ms | Allocations: 5196)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------
+ProductsControllerTest: test_should_update_product
+--------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started PATCH "/products/980190962" for 127.0.0.1 at 2024-02-09 21:32:52 -0800
+Processing by ProductsController#update as HTML
+  Parameters: {"product"=>{"description"=>"MyText", "image_url"=>"lorem.jpg", "price"=>"9.99", "title"=>"MyString"}, "id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? AND "products"."id" != ? LIMIT ?[0m  [["title", "MyString"], ["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering layout layouts/application.html.erb
+  Rendering products/edit.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 1.1ms | Allocations: 2080)
+  Rendered products/edit.html.erb within layouts/application (Duration: 1.2ms | Allocations: 2202)
+  Rendered layout layouts/application.html.erb (Duration: 1.6ms | Allocations: 3948)
+Completed 422 Unprocessable Entity in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms | Allocations: 4878)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixtures Load (0.2ms)[0m  [1m[31mDELETE FROM "products";
+INSERT INTO "products" ("id", "title", "description", "image_url", "price", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', 'lorem.jpg', 9.99, '2024-02-10 05:34:27.593332', '2024-02-10 05:34:27.593332');
+INSERT INTO "products" ("id", "title", "description", "image_url", "price", "created_at", "updated_at") VALUES (298486374, 'MyString', 'MyText', 'lorem.jpg', 9.99, '2024-02-10 05:34:27.593332', '2024-02-10 05:34:27.593332');
+INSERT INTO "products" ("id", "title", "description", "image_url", "price", "created_at", "updated_at") VALUES (207281424, 'Programming Ruby 1.9', 'Ruby is the fastest growing and most existing programming language out there. If you need to get working progreams delivered fast, you should add Ruby to your toolbox.', 'ruby.jpg', 49.95, '2024-02-10 05:34:27.593332', '2024-02-10 05:34:27.593332')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_key_check[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------------------------
+ProductTest: test_product_is_not_valid_without_a_unique_title
+-------------------------------------------------------------
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 207281424], ["LIMIT", 1]]
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "Programming Ruby 1.9"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------
+ProductTest: test_product_price_must_be_positive
+------------------------------------------------
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------
+ProductTest: test_image_url
+---------------------------
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------
+ProductTest: test_product_attributes_must_not_be_empty
+------------------------------------------------------
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------
+ProductsControllerTest: test_should_get_edit
+--------------------------------------------
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/products/980190962/edit" for 127.0.0.1 at 2024-02-09 21:34:27 -0800
+Processing by ProductsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/edit.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 1.9ms | Allocations: 2827)
+  Rendered products/edit.html.erb within layouts/application (Duration: 2.7ms | Allocations: 3511)
+  Rendered layout layouts/application.html.erb (Duration: 58.5ms | Allocations: 51043)
+Completed 200 OK in 63ms (Views: 59.7ms | ActiveRecord: 0.0ms | Allocations: 54919)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------
+ProductsControllerTest: test_should_get_new
+-------------------------------------------
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/products/new" for 127.0.0.1 at 2024-02-09 21:34:27 -0800
+Processing by ProductsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 0.6ms | Allocations: 1275)
+  Rendered products/new.html.erb within layouts/application (Duration: 1.2ms | Allocations: 1529)
+  Rendered layout layouts/application.html.erb (Duration: 1.8ms | Allocations: 3347)
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.0ms | Allocations: 3708)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------
+ProductsControllerTest: test_should_update_product
+--------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started PATCH "/products/980190962" for 127.0.0.1 at 2024-02-09 21:34:27 -0800
+Processing by ProductsController#update as HTML
+  Parameters: {"product"=>{"description"=>"MyText", "image_url"=>"lorem.jpg", "price"=>"9.99", "title"=>"MyString"}, "id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? AND "products"."id" != ? LIMIT ?[0m  [["title", "MyString"], ["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering layout layouts/application.html.erb
+  Rendering products/edit.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 0.8ms | Allocations: 2214)
+  Rendered products/edit.html.erb within layouts/application (Duration: 0.8ms | Allocations: 2351)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | Allocations: 4156)
+Completed 422 Unprocessable Entity in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 5535)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------------
+ProductsControllerTest: test_should_destroy_product
+---------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mProduct Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+Started DELETE "/products/980190962" for 127.0.0.1 at 2024-02-09 21:34:27 -0800
+Processing by ProductsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Destroy (0.1ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = ?[0m  [["id", 980190962]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/products
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms | Allocations: 861)
+  [1m[36mProduct Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------
+ProductsControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/products" for 127.0.0.1 at 2024-02-09 21:34:27 -0800
+Processing by ProductsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 3124)
+  Rendered layout layouts/application.html.erb (Duration: 3.3ms | Allocations: 4875)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.0ms | Allocations: 5196)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------
+ProductsControllerTest: test_should_create_product
+--------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mProduct Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+Started POST "/products" for 127.0.0.1 at 2024-02-09 21:34:27 -0800
+Processing by ProductsController#create as HTML
+  Parameters: {"product"=>{"description"=>"MyText", "image_url"=>"lorem.jpg", "price"=>"9.99", "title"=>"MyString"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 0.8ms | Allocations: 2088)
+  Rendered products/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 2171)
+  Rendered layout layouts/application.html.erb (Duration: 1.4ms | Allocations: 3976)
+Completed 422 Unprocessable Entity in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms | Allocations: 5375)
+  [1m[36mProduct Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------
+ProductsControllerTest: test_should_show_product
+------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/products/980190962" for 127.0.0.1 at 2024-02-09 21:34:27 -0800
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/_product.html.erb (Duration: 0.5ms | Allocations: 357)
+  Rendered products/show.html.erb within layouts/application (Duration: 1.4ms | Allocations: 1359)
+  Rendered layout layouts/application.html.erb (Duration: 1.8ms | Allocations: 3170)
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.0ms | Allocations: 3617)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixtures Load (0.2ms)[0m  [1m[31mDELETE FROM "products";
+INSERT INTO "products" ("id", "title", "description", "image_url", "price", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', 'lorem.jpg', 9.99, '2024-02-10 05:35:55.337017', '2024-02-10 05:35:55.337017');
+INSERT INTO "products" ("id", "title", "description", "image_url", "price", "created_at", "updated_at") VALUES (298486374, 'MyString', 'MyText', 'lorem.jpg', 9.99, '2024-02-10 05:35:55.337017', '2024-02-10 05:35:55.337017');
+INSERT INTO "products" ("id", "title", "description", "image_url", "price", "created_at", "updated_at") VALUES (207281424, 'Programming Ruby 1.9', 'Ruby is the fastest growing and most existing programming language out there. If you need to get working progreams delivered fast, you should add Ruby to your toolbox.', 'ruby.jpg', 49.95, '2024-02-10 05:35:55.337017', '2024-02-10 05:35:55.337017')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_key_check[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------
+ProductsControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/products" for 127.0.0.1 at 2024-02-09 21:35:55 -0800
+Processing by ProductsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (Duration: 53.1ms | Allocations: 32703)
+  Rendered layout layouts/application.html.erb (Duration: 59.7ms | Allocations: 51447)
+Completed 200 OK in 65ms (Views: 60.8ms | ActiveRecord: 0.1ms | Allocations: 55546)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------
+ProductsControllerTest: test_should_create_product
+--------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mProduct Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+Started POST "/products" for 127.0.0.1 at 2024-02-09 21:35:55 -0800
+Processing by ProductsController#create as HTML
+  Parameters: {"product"=>{"description"=>"MyText", "image_url"=>"lorem.jpg", "price"=>"9.99", "title"=>"The Great Book 265"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "The Great Book 265"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "image_url", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "The Great Book 265"], ["description", "MyText"], ["image_url", "lorem.jpg"], ["price", 9.99], ["created_at", "2024-02-10 05:35:55.461876"], ["updated_at", "2024-02-10 05:35:55.461876"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/products/980190963
+Completed 302 Found in 1ms (ActiveRecord: 0.2ms | Allocations: 1940)
+  [1m[36mProduct Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------------
+ProductsControllerTest: test_should_destroy_product
+---------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mProduct Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+Started DELETE "/products/980190962" for 127.0.0.1 at 2024-02-09 21:35:55 -0800
+Processing by ProductsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Destroy (0.1ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = ?[0m  [["id", 980190962]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/products
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms | Allocations: 822)
+  [1m[36mProduct Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------
+ProductsControllerTest: test_should_get_new
+-------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/products/new" for 127.0.0.1 at 2024-02-09 21:35:55 -0800
+Processing by ProductsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 2.6ms | Allocations: 2799)
+  Rendered products/new.html.erb within layouts/application (Duration: 3.1ms | Allocations: 3132)
+  Rendered layout layouts/application.html.erb (Duration: 3.8ms | Allocations: 4955)
+Completed 200 OK in 4ms (Views: 4.0ms | ActiveRecord: 0.0ms | Allocations: 5309)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------
+ProductsControllerTest: test_should_show_product
+------------------------------------------------
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/products/980190962" for 127.0.0.1 at 2024-02-09 21:35:55 -0800
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/_product.html.erb (Duration: 0.4ms | Allocations: 358)
+  Rendered products/show.html.erb within layouts/application (Duration: 1.5ms | Allocations: 1375)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | Allocations: 3185)
+Completed 200 OK in 2ms (Views: 2.1ms | ActiveRecord: 0.0ms | Allocations: 3672)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------
+ProductsControllerTest: test_should_update_product
+--------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started PATCH "/products/980190962" for 127.0.0.1 at 2024-02-09 21:35:55 -0800
+Processing by ProductsController#update as HTML
+  Parameters: {"product"=>{"description"=>"MyText", "image_url"=>"lorem.jpg", "price"=>"9.99", "title"=>"MyString"}, "id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? AND "products"."id" != ? LIMIT ?[0m  [["title", "MyString"], ["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering layout layouts/application.html.erb
+  Rendering products/edit.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 0.8ms | Allocations: 2260)
+  Rendered products/edit.html.erb within layouts/application (Duration: 1.0ms | Allocations: 2551)
+  Rendered layout layouts/application.html.erb (Duration: 1.4ms | Allocations: 4298)
+Completed 422 Unprocessable Entity in 2ms (Views: 1.6ms | ActiveRecord: 0.1ms | Allocations: 5434)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------
+ProductsControllerTest: test_should_get_edit
+--------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/products/980190962/edit" for 127.0.0.1 at 2024-02-09 21:35:55 -0800
+Processing by ProductsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/edit.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 0.4ms | Allocations: 1248)
+  Rendered products/edit.html.erb within layouts/application (Duration: 0.5ms | Allocations: 1370)
+  Rendered layout layouts/application.html.erb (Duration: 0.9ms | Allocations: 3116)
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.0ms | Allocations: 3436)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------
+ProductTest: test_product_attributes_must_not_be_empty
+------------------------------------------------------
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------
+ProductTest: test_image_url
+---------------------------
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------
+ProductTest: test_product_price_must_be_positive
+------------------------------------------------
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------------------------
+ProductTest: test_product_is_not_valid_without_a_unique_title
+-------------------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 207281424], ["LIMIT", 1]]
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "Programming Ruby 1.9"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixtures Load (0.2ms)[0m  [1m[31mDELETE FROM "products";
+INSERT INTO "products" ("id", "title", "description", "image_url", "price", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', 'lorem.jpg', 9.99, '2024-02-10 05:36:23.359788', '2024-02-10 05:36:23.359788');
+INSERT INTO "products" ("id", "title", "description", "image_url", "price", "created_at", "updated_at") VALUES (298486374, 'MyString', 'MyText', 'lorem.jpg', 9.99, '2024-02-10 05:36:23.359788', '2024-02-10 05:36:23.359788');
+INSERT INTO "products" ("id", "title", "description", "image_url", "price", "created_at", "updated_at") VALUES (207281424, 'Programming Ruby 1.9', 'Ruby is the fastest growing and most existing programming language out there. If you need to get working progreams delivered fast, you should add Ruby to your toolbox.', 'ruby.jpg', 49.95, '2024-02-10 05:36:23.359788', '2024-02-10 05:36:23.359788')[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_key_check[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------
+ProductTest: test_image_url
+---------------------------
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------
+ProductTest: test_product_attributes_must_not_be_empty
+------------------------------------------------------
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------
+ProductTest: test_product_price_must_be_positive
+------------------------------------------------
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------------------------
+ProductTest: test_product_is_not_valid_without_a_unique_title
+-------------------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 207281424], ["LIMIT", 1]]
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "Programming Ruby 1.9"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------------
+ProductsControllerTest: test_should_destroy_product
+---------------------------------------------------
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mProduct Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+Started DELETE "/products/980190962" for 127.0.0.1 at 2024-02-09 21:36:23 -0800
+Processing by ProductsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Destroy (0.1ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = ?[0m  [["id", 980190962]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/products
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms | Allocations: 2702)
+  [1m[36mProduct Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------
+ProductsControllerTest: test_should_show_product
+------------------------------------------------
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/products/980190962" for 127.0.0.1 at 2024-02-09 21:36:23 -0800
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/_product.html.erb (Duration: 0.3ms | Allocations: 378)
+  Rendered products/show.html.erb within layouts/application (Duration: 1.4ms | Allocations: 1686)
+  Rendered layout layouts/application.html.erb (Duration: 54.9ms | Allocations: 49448)
+Completed 200 OK in 57ms (Views: 56.0ms | ActiveRecord: 0.0ms | Allocations: 51806)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------
+ProductsControllerTest: test_should_get_new
+-------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/products/new" for 127.0.0.1 at 2024-02-09 21:36:23 -0800
+Processing by ProductsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 2.3ms | Allocations: 2587)
+  Rendered products/new.html.erb within layouts/application (Duration: 2.6ms | Allocations: 2881)
+  Rendered layout layouts/application.html.erb (Duration: 3.1ms | Allocations: 4705)
+Completed 200 OK in 3ms (Views: 3.2ms | ActiveRecord: 0.0ms | Allocations: 5047)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------
+ProductsControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/products" for 127.0.0.1 at 2024-02-09 21:36:23 -0800
+Processing by ProductsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 3191)
+  Rendered layout layouts/application.html.erb (Duration: 2.6ms | Allocations: 4943)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.0ms | Allocations: 5302)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------
+ProductsControllerTest: test_should_create_product
+--------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mProduct Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+Started POST "/products" for 127.0.0.1 at 2024-02-09 21:36:23 -0800
+Processing by ProductsController#create as HTML
+  Parameters: {"product"=>{"description"=>"MyText", "image_url"=>"lorem.jpg", "price"=>"9.99", "title"=>"The Great Book 683"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "The Great Book 683"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "image_url", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "The Great Book 683"], ["description", "MyText"], ["image_url", "lorem.jpg"], ["price", 9.99], ["created_at", "2024-02-10 05:36:23.493354"], ["updated_at", "2024-02-10 05:36:23.493354"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/products/980190963
+Completed 302 Found in 1ms (ActiveRecord: 0.2ms | Allocations: 1427)
+  [1m[36mProduct Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------
+ProductsControllerTest: test_should_get_edit
+--------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/products/980190962/edit" for 127.0.0.1 at 2024-02-09 21:36:23 -0800
+Processing by ProductsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/edit.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 0.5ms | Allocations: 1357)
+  Rendered products/edit.html.erb within layouts/application (Duration: 0.7ms | Allocations: 1672)
+  Rendered layout layouts/application.html.erb (Duration: 1.2ms | Allocations: 3475)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.0ms | Allocations: 3917)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------
+ProductsControllerTest: test_should_update_product
+--------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started PATCH "/products/980190962" for 127.0.0.1 at 2024-02-09 21:36:23 -0800
+Processing by ProductsController#update as HTML
+  Parameters: {"product"=>{"description"=>"MyText", "image_url"=>"lorem.jpg", "price"=>"9.99", "title"=>"MyString"}, "id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? AND "products"."id" != ? LIMIT ?[0m  [["title", "MyString"], ["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering layout layouts/application.html.erb
+  Rendering products/edit.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 0.7ms | Allocations: 2098)
+  Rendered products/edit.html.erb within layouts/application (Duration: 0.8ms | Allocations: 2220)
+  Rendered layout layouts/application.html.erb (Duration: 1.1ms | Allocations: 3966)
+Completed 422 Unprocessable Entity in 2ms (Views: 1.2ms | ActiveRecord: 0.1ms | Allocations: 5281)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixtures Load (0.2ms)[0m  [1m[31mDELETE FROM "products";
+INSERT INTO "products" ("id", "title", "description", "image_url", "price", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', 'lorem.jpg', 9.99, '2024-02-10 05:36:50.281128', '2024-02-10 05:36:50.281128');
+INSERT INTO "products" ("id", "title", "description", "image_url", "price", "created_at", "updated_at") VALUES (298486374, 'MyString', 'MyText', 'lorem.jpg', 9.99, '2024-02-10 05:36:50.281128', '2024-02-10 05:36:50.281128');
+INSERT INTO "products" ("id", "title", "description", "image_url", "price", "created_at", "updated_at") VALUES (207281424, 'Programming Ruby 1.9', 'Ruby is the fastest growing and most existing programming language out there. If you need to get working progreams delivered fast, you should add Ruby to your toolbox.', 'ruby.jpg', 49.95, '2024-02-10 05:36:50.281128', '2024-02-10 05:36:50.281128')[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_key_check[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------
+ProductsControllerTest: test_should_create_product
+--------------------------------------------------
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mProduct Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+Started POST "/products" for 127.0.0.1 at 2024-02-09 21:36:50 -0800
+Processing by ProductsController#create as HTML
+  Parameters: {"product"=>{"description"=>"MyText", "image_url"=>"lorem.jpg", "price"=>"9.99", "title"=>"The Great Book 666"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "The Great Book 666"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "image_url", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "The Great Book 666"], ["description", "MyText"], ["image_url", "lorem.jpg"], ["price", 9.99], ["created_at", "2024-02-10 05:36:50.340067"], ["updated_at", "2024-02-10 05:36:50.340067"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/products/980190963
+Completed 302 Found in 4ms (ActiveRecord: 0.3ms | Allocations: 3462)
+  [1m[36mProduct Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------
+ProductsControllerTest: test_should_show_product
+------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/products/980190962" for 127.0.0.1 at 2024-02-09 21:36:50 -0800
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/_product.html.erb (Duration: 0.3ms | Allocations: 377)
+  Rendered products/show.html.erb within layouts/application (Duration: 1.4ms | Allocations: 1684)
+  Rendered layout layouts/application.html.erb (Duration: 56.1ms | Allocations: 49153)
+Completed 200 OK in 59ms (Views: 57.2ms | ActiveRecord: 0.0ms | Allocations: 52356)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------
+ProductsControllerTest: test_should_get_new
+-------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/products/new" for 127.0.0.1 at 2024-02-09 21:36:50 -0800
+Processing by ProductsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 1.8ms | Allocations: 2797)
+  Rendered products/new.html.erb within layouts/application (Duration: 2.2ms | Allocations: 3095)
+  Rendered layout layouts/application.html.erb (Duration: 2.7ms | Allocations: 4918)
+Completed 200 OK in 3ms (Views: 2.8ms | ActiveRecord: 0.0ms | Allocations: 5261)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------
+ProductsControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/products" for 127.0.0.1 at 2024-02-09 21:36:50 -0800
+Processing by ProductsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (Duration: 1.6ms | Allocations: 3187)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | Allocations: 4940)
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.0ms | Allocations: 5299)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------
+ProductsControllerTest: test_should_get_edit
+--------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/products/980190962/edit" for 127.0.0.1 at 2024-02-09 21:36:50 -0800
+Processing by ProductsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/edit.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 0.5ms | Allocations: 1292)
+  Rendered products/edit.html.erb within layouts/application (Duration: 0.7ms | Allocations: 1577)
+  Rendered layout layouts/application.html.erb (Duration: 1.2ms | Allocations: 3323)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.0ms | Allocations: 3709)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------
+ProductsControllerTest: test_should_update_product
+--------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started PATCH "/products/980190962" for 127.0.0.1 at 2024-02-09 21:36:50 -0800
+Processing by ProductsController#update as HTML
+  Parameters: {"product"=>{"description"=>"MyText", "image_url"=>"lorem.jpg", "price"=>"9.99", "title"=>"The Great Book 677"}, "id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? AND "products"."id" != ? LIMIT ?[0m  [["title", "The Great Book 677"], ["id", 980190962], ["LIMIT", 1]]
+  [1m[36mProduct Update (0.2ms)[0m  [1m[33mUPDATE "products" SET "title" = ?, "updated_at" = ? WHERE "products"."id" = ?[0m  [["title", "The Great Book 677"], ["updated_at", "2024-02-10 05:36:50.416163"], ["id", 980190962]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/products/980190962
+Completed 302 Found in 1ms (ActiveRecord: 0.3ms | Allocations: 1311)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------------
+ProductsControllerTest: test_should_destroy_product
+---------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mProduct Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+Started DELETE "/products/980190962" for 127.0.0.1 at 2024-02-09 21:36:50 -0800
+Processing by ProductsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Destroy (0.1ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = ?[0m  [["id", 980190962]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/products
+Completed 302 Found in 0ms (ActiveRecord: 0.1ms | Allocations: 612)
+  [1m[36mProduct Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------
+ProductTest: test_image_url
+---------------------------
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------------------------
+ProductTest: test_product_is_not_valid_without_a_unique_title
+-------------------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 207281424], ["LIMIT", 1]]
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "Programming Ruby 1.9"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------
+ProductTest: test_product_attributes_must_not_be_empty
+------------------------------------------------------
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------
+ProductTest: test_product_price_must_be_positive
+------------------------------------------------
+  [1m[36mProduct Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mCACHE Product Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "My Book Title"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
