@@ -125,3 +125,4 @@ yarn-debug.log*
 
 tmp/cache/*
 rails-web-dev-book/depot/tmp/cache/
+rails-web-dev-book/depot/log/development.log
